@@ -1,6 +1,7 @@
 package com.example.btsApplication.controller;
 
 import com.example.btsApplication.entity.PriceEntity;
+import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,18 +23,18 @@ public class PriceController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PriceEntity> updatePrice(@PathVariable Long id, @RequestParam Integer price) {
-        PriceEntity updatedPriceEntity = priceService.updatePrice(id, price);
+    public ResponseEntity<PriceModel> updatePrice(@PathVariable Long id, @RequestParam Integer price) {
+        PriceModel priceModel = priceService.updatePrice(id, price);
 
-        if (updatedPriceEntity != null) {
-            return new ResponseEntity<>(updatedPriceEntity, HttpStatus.OK);
+        if (priceModel != null) {
+            return new ResponseEntity<>(priceModel, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @GetMapping("getAllPrices")
-    public ResponseEntity<List<PriceEntity>> getAllPrices() {
-        List<PriceEntity> prices = priceService.getAllPrices();
+    public ResponseEntity<List<PriceModel>> getAllPrices() {
+        List<PriceModel> prices = priceService.getAllPrices();
         return new ResponseEntity<>(prices, HttpStatus.OK);
     }
 }

@@ -1,6 +1,9 @@
 package com.example.btsApplication.service;
 
+import com.example.btsApplication.entity.BtsEntity;
 import com.example.btsApplication.entity.PriceEntity;
+import com.example.btsApplication.model.BtsModel;
+import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.repository.PriceRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PriceService {
@@ -19,20 +23,31 @@ public class PriceService {
         this.priceRepository = priceRepository;
     }
 
-    @Transactional
-    public PriceEntity updatePrice(Long id, Integer price) {
+    public PriceModel updatePrice(Long id, Integer price) {
         Optional<PriceEntity> priceEntity = priceRepository.findById(id);
         if (priceEntity.isPresent()) {
             PriceEntity existingPriceEntity = priceEntity.get();
             existingPriceEntity.setPrice(price);
             existingPriceEntity.setUpdatedDay(LocalDateTime.now());
-            return priceRepository.save(existingPriceEntity);
+            return convertToModel(priceRepository.save(existingPriceEntity));
         } else {
             return null;
         }
     }
 
-    public List<PriceEntity> getAllPrices() {
-        return priceRepository.findAll();
+    public List<PriceModel> getAllPrices() {
+        List<PriceEntity> priceEntities = priceRepository.findAll();
+        return priceEntities.stream()
+                .map(this::convertToModel)
+                .collect(Collectors.toList());
+    }
+    private PriceModel convertToModel(PriceEntity priceEntity){
+        PriceModel priceModel = new PriceModel();
+        priceModel.setId(priceEntity.getId());
+        priceModel.setCreatedDay(priceEntity.getCreatedDay());
+        priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
+        priceModel.setUpdatedDay(priceEntity.getUpdatedDay());
+        priceModel.setPrice(priceEntity.getPrice());
+        return priceModel;
     }
 }
