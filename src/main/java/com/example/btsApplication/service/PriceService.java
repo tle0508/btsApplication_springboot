@@ -35,6 +35,7 @@ public class PriceService {
         }
     }
 
+
     public List<PriceModel> getAllPrices() {
         List<PriceEntity> priceEntities = priceRepository.findAll();
         return priceEntities.stream()

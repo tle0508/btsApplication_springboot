@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +25,10 @@ public class BtsService {
                 .collect(Collectors.toList());
         return btsModels;
     }
+    public BtsModel findById(Long id) {
+        Optional<BtsEntity> btsEntity = btsRepository.findById(id);
+        return btsEntity.map(this::convertToModel).orElse(null);
+    }
     public List<BtsModel> getAll() {
         List<BtsEntity> btsEntities = btsRepository.findAll();
         List<BtsModel> btsModels = btsEntities.stream()
@@ -37,14 +42,11 @@ public class BtsService {
         btsModel.setActivate(btsEntity.getActivate());
         btsModel.setBtsStationNameENG(btsEntity.getBtsStationNameENG());
         btsModel.setBtsStationNameTH(btsEntity.getBtsStationNameTH());
-        btsModel.setCenter(btsEntity.getCenter());
         btsModel.setCreatedDay(btsEntity.getCreatedDay());
         btsModel.setExtension(btsEntity.getExtension());
         btsModel.setUpdatedDay(btsEntity.getUpdatedDay());
         btsModel.setLineColor(btsEntity.getLineColor());
         btsModel.setIdStation(btsEntity.getIdStation());
-        btsModel.setNextStationId(btsEntity.getNextStationId());
-        btsModel.setPreviousStationId(btsEntity.getPreviousStationId());
        return btsModel;
     }
 }

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "bts_table")
+@Table(name = "station")
 public class BtsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +25,6 @@ public class BtsEntity {
     @Column(name = "updated_day")
     private LocalDateTime updatedDay;
 
-    @Column(name = "IS_CENTER")
-    private Boolean isCenter;
-
     @Column(name = "bts_station_name_TH")
     private String btsStationNameTH;
 
@@ -40,28 +37,19 @@ public class BtsEntity {
     @Column(name = "line_color")
     private String lineColor;
 
-    @Column(name = "next_station_id")
-    private Long nextStationId;
-
-    @Column(name = "previous_station_id")
-    private Long previousStationId;
-
-    public BtsEntity() {
-    }
-
-    public BtsEntity(Long id, Boolean isActivate, Boolean isExtension, LocalDateTime createdDay, LocalDateTime updatedDay, Boolean isCenter, String btsStationNameTH, String btsStationNameENG, String idStation, String lineColor, Long nextStationId, Long previousStationId) {
+    public BtsEntity(Long id, Boolean isActivate, Boolean isExtension, LocalDateTime createdDay, LocalDateTime updatedDay, String btsStationNameTH, String btsStationNameENG, String idStation, String lineColor) {
         this.id = id;
         this.isActivate = isActivate;
         this.isExtension = isExtension;
         this.createdDay = createdDay;
         this.updatedDay = updatedDay;
-        this.isCenter = isCenter;
         this.btsStationNameTH = btsStationNameTH;
         this.btsStationNameENG = btsStationNameENG;
         this.idStation = idStation;
         this.lineColor = lineColor;
-        this.nextStationId = nextStationId;
-        this.previousStationId = previousStationId;
+    }
+
+    public BtsEntity() {
     }
 
     public Long getId() {
@@ -104,14 +92,6 @@ public class BtsEntity {
         this.updatedDay = updatedDay;
     }
 
-    public Boolean getCenter() {
-        return isCenter;
-    }
-
-    public void setCenter(Boolean isCenter) {
-        this.isCenter = isCenter;
-    }
-
     public String getBtsStationNameTH() {
         return btsStationNameTH;
     }
@@ -142,21 +122,5 @@ public class BtsEntity {
 
     public void setLineColor(String lineColor) {
         this.lineColor = lineColor;
-    }
-
-    public Long getNextStationId() {
-        return nextStationId;
-    }
-
-    public void setNextStationId(Long nextStationId) {
-        this.nextStationId = nextStationId;
-    }
-
-    public Long getPreviousStationId() {
-        return previousStationId;
-    }
-
-    public void setPreviousStationId(Long previousStationId) {
-        this.previousStationId = previousStationId;
     }
 }

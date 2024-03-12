@@ -9,13 +9,11 @@ public class BtsModel {
     private Boolean isExtension;
     private LocalDateTime createdDay;
     private LocalDateTime updatedDay;
-    private Boolean isCenter;
+
     private String btsStationNameTH;
     private String btsStationNameENG;
     private String idStation;
     private String lineColor;
-    private Long nextStationId;
-    private Long previousStationId;
 
     public Long getId() {
         return id;
@@ -57,14 +55,6 @@ public class BtsModel {
         this.updatedDay = updatedDay;
     }
 
-    public Boolean getCenter() {
-        return isCenter;
-    }
-
-    public void setCenter(Boolean center) {
-        isCenter = center;
-    }
-
     public String getBtsStationNameTH() {
         return btsStationNameTH;
     }
@@ -95,21 +85,5 @@ public class BtsModel {
 
     public void setLineColor(String lineColor) {
         this.lineColor = lineColor;
-    }
-
-    public Long getNextStationId() {
-        return nextStationId;
-    }
-
-    public void setNextStationId(Long nextStationId) {
-        this.nextStationId = nextStationId;
-    }
-
-    public Long getPreviousStationId() {
-        return previousStationId;
-    }
-
-    public void setPreviousStationId(Long previousStationId) {
-        this.previousStationId = previousStationId;
     }
 }
