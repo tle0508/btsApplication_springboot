@@ -12,6 +12,4 @@ import java.util.Optional;
 public interface PriceRepository  extends JpaRepository<PriceEntity, Long> {
     Optional<PriceEntity> findById(Long id);
 
-    @Query("SELECT p.price FROM PriceEntity p WHERE p.numOfDistance = :numOfDistance")
-    Integer getPriceByDistance(@Param("numOfDistance") Integer numOfDistance);
 }

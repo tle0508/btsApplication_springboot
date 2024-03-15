@@ -1,11 +1,9 @@
 package com.example.btsApplication.service;
 
-import com.example.btsApplication.entity.BtsEntity;
+
 import com.example.btsApplication.entity.PriceEntity;
-import com.example.btsApplication.model.BtsModel;
 import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.repository.PriceRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,9 +44,10 @@ public class PriceService {
         PriceModel priceModel = new PriceModel();
         priceModel.setId(priceEntity.getId());
         priceModel.setCreatedDay(priceEntity.getCreatedDay());
-        priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
         priceModel.setUpdatedDay(priceEntity.getUpdatedDay());
         priceModel.setPrice(priceEntity.getPrice());
+        // เพิ่มการตั้งค่า distanceModel
+
         return priceModel;
     }
 }

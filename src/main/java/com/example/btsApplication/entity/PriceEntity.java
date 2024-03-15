@@ -10,9 +10,6 @@ import java.time.LocalDateTime;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-        @Column(name = "num_of_distance")
-        private Integer numOfDistance;
-
         @Column(name = "price")
         private Integer price;
 
@@ -21,12 +18,14 @@ import java.time.LocalDateTime;
 
         @Column(name = "updated_day")
         private LocalDateTime updatedDay;
-        public PriceEntity() {
 
+
+
+        public PriceEntity() {
         }
-        public PriceEntity(Long id, Integer numOfDistance, Integer price, LocalDateTime createdDay, LocalDateTime updatedDay) {
+
+        public PriceEntity(Long id, Integer price, LocalDateTime createdDay, LocalDateTime updatedDay) {
             this.id = id;
-            this.numOfDistance = numOfDistance;
             this.price = price;
             this.createdDay = createdDay;
             this.updatedDay = updatedDay;
@@ -38,14 +37,6 @@ import java.time.LocalDateTime;
 
         public void setId(Long id) {
             this.id = id;
-        }
-
-        public Integer getNumOfDistance() {
-            return numOfDistance;
-        }
-
-        public void setNumOfDistance(Integer numOfDistance) {
-            this.numOfDistance = numOfDistance;
         }
 
         public Integer getPrice() {
