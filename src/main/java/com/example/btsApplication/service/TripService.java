@@ -50,13 +50,45 @@ public class TripService {
         priceModel.setPrice(tripEntity.getPrice().getPrice());
         priceModel.setCreatedDay(tripEntity.getPrice().getCreatedDay());
         priceModel.setUpdatedDay(tripEntity.getPrice().getUpdatedDay());
+        int adjustedPrice;
 
-
-        // เพิ่มเงื่อนไขเช็คหาก endStationId.extension เป็น false ให้บวกราคาอีก 15 บาท
-        if (!endStation.getExtension()) {
-            if (!(endStation.getId() == 17L)){
-                int adjustedPrice = priceModel.getPrice() + priceExtension.getPrice();
+        if(startStation.getExtension() && endStation.getExtension()){
+            if((startStation.getId() < 17 && endStation.getId()>17)){
+                adjustedPrice = priceModel.getPrice() + priceExtension.getPrice();
                 priceModel.setPrice(adjustedPrice);
+            }else  if((startStation.getId()>34 && startStation.getId() <49) && ( endStation.getId() < 34 || endStation.getId()>58 )){
+                adjustedPrice = priceModel.getPrice() + priceExtension.getPrice();
+                priceModel.setPrice(adjustedPrice);
+            } else if ((startStation.getId() > 58 && endStation.getId()<58)) {
+                adjustedPrice = priceModel.getPrice() + priceExtension.getPrice();
+                priceModel.setPrice(adjustedPrice);
+            }
+        }
+        // เพิ่มเงื่อนไขเช็คหาก endStationId ไม่เป็นส่วนต่อขยาย ให้บวกราคาอีก 15 บาท
+         if (startStation.getExtension() && !endStation.getExtension()) {
+            if (!(endStation.getId() == 17) && !(endStation.getId() == 34)){
+                adjustedPrice = priceModel.getPrice() + priceExtension.getPrice();
+                priceModel.setPrice(adjustedPrice);
+            }
+        }
+        // เพิ่มเงื่อนไขเช็คหาก StartStationId ไม่เป็นส่วนต่อขยาย ให้บวกราคาอีก 15 บาท
+        else if (!startStation.getExtension() && endStation.getExtension()){
+            if (!(startStation.getId() == 17) && !(startStation.getId() == 34) && !(startStation.getId() == 58)) {
+                if (endStation.getId() > 0 && endStation.getId() < 17 || endStation.getId() > 34 && endStation.getId() < 49 || endStation.getId() > 58 && endStation.getId() < 63) {
+                    adjustedPrice = priceModel.getPrice() + priceExtension.getPrice();
+                    priceModel.setPrice(adjustedPrice);
+                }
+            }else {
+                if(startStation.getId()==17 && endStation.getId()>17){
+                    adjustedPrice = priceModel.getPrice() + priceExtension.getPrice();
+                    priceModel.setPrice(adjustedPrice);
+                } else if (startStation.getId() == 34 && (endStation.getId()<34 || endStation.getId()>58)) {
+                    adjustedPrice = priceModel.getPrice() + priceExtension.getPrice();
+                    priceModel.setPrice(adjustedPrice);
+                } else if (startStation.getId() == 58 && !(endStation.getId() > 58)) {
+                    adjustedPrice = priceModel.getPrice() + priceExtension.getPrice();
+                    priceModel.setPrice(adjustedPrice);
+                }
             }
         }
         tripModel.setPriceModel(priceModel);

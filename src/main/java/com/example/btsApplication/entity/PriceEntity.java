@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
         private Long id;
 
         @Column(name = "price")
-        private Integer price;
+        private int price;
 
         @Column(name = "created_day", updatable = false)
         private LocalDateTime createdDay;
@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
         public PriceEntity() {
         }
 
-        public PriceEntity(Long id, Integer price, LocalDateTime createdDay, LocalDateTime updatedDay) {
+        public PriceEntity(Long id, int price, LocalDateTime createdDay, LocalDateTime updatedDay) {
             this.id = id;
             this.price = price;
             this.createdDay = createdDay;
@@ -39,11 +39,11 @@ import java.time.LocalDateTime;
             this.id = id;
         }
 
-        public Integer getPrice() {
+        public int getPrice() {
             return price;
         }
 
-        public void setPrice(Integer price) {
+        public void setPrice(int price) {
             this.price = price;
         }
 

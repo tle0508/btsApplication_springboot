@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 
 public class PriceModel {
     private Long id;
-    private Integer price;
+    private int price;
     private LocalDateTime createdDay;
     private LocalDateTime updatedDay;
 
 
 
-    public PriceModel(Long id, Integer price, LocalDateTime createdDay, LocalDateTime updatedDay) {
+    public PriceModel(Long id, int price, LocalDateTime createdDay, LocalDateTime updatedDay) {
         this.id = id;
         this.price = price;
         this.createdDay = createdDay;
@@ -36,11 +36,11 @@ public class PriceModel {
         this.id = id;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
