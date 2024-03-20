@@ -21,16 +21,19 @@ public class TripController {
     public TripController(TripService tripService) {
         this.tripService = tripService;
     }
-    @GetMapping("/all")
-    public List<TripModel> getAllTrips() {
-        return tripService.getAllTrips();
-    }
-    @GetMapping("findByStartAndEndStation/{startStationId}/{endStationId}")
-    public ResponseEntity<List<TripModel>> getTripsByStartAndEndStation(
+
+    @GetMapping("findByStartAndEndStationNormalType/{startStationId}/{endStationId}")
+    public ResponseEntity<List<TripModel>> getTripsByStartAndEndStationNormalType(
             @RequestParam Long startStationId,
             @RequestParam Long endStationId) {
-        List<TripModel> trips = tripService.findTripsByStartAndEndStation(startStationId, endStationId);
+        List<TripModel> trips = tripService.findTripsByStartAndEndStationNormalType(startStationId, endStationId);
         return new ResponseEntity<>(trips, HttpStatus.OK);
     }
-
+    @GetMapping("findTripsByStartAndEndStationSpecialType/{startStationId}/{endStationId}")
+    public ResponseEntity<List<TripModel>> findTripsByStartAndEndStationSpecialType(
+            @RequestParam Long startStationId,
+            @RequestParam Long endStationId) {
+        List<TripModel> trips = tripService.findTripsByStartAndEndStationSpecialType(startStationId, endStationId);
+        return new ResponseEntity<>(trips, HttpStatus.OK);
+    }
 }
