@@ -28,8 +28,7 @@ public class TripService {
     }
 
     private TripModel processSpecialType(TripEntity tripEntity) {
-        PriceEntity priceExtension = priceRepository.findById(9L).orElse(null);
-        int extensionPrice = priceExtension.getPrice()-15;
+        int extensionPrice = 0;
         return convertToModel(tripEntity, extensionPrice);
     }
 

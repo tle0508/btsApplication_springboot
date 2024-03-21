@@ -31,14 +31,4 @@ public class BtsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("/getAll")
-    public ResponseEntity<List<BtsModel>> getAllBts() {
-        List<BtsModel> models = btsService.getAll();
-        if (!models.isEmpty()) {
-            return new ResponseEntity<>(models, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
 }

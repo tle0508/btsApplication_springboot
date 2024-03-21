@@ -22,8 +22,8 @@ public class TripController {
         this.tripService = tripService;
     }
 
-    @GetMapping("findByStartAndEndStationNormalType/{startStationId}/{endStationId}")
-    public ResponseEntity<List<TripModel>> getTripsByStartAndEndStationNormalType(
+    @GetMapping("findTripsByStartAndEndStationNormalType/{startStationId}/{endStationId}")
+    public ResponseEntity<List<TripModel>> findTripsByStartAndEndStationNormalType(
             @RequestParam Long startStationId,
             @RequestParam Long endStationId) {
         List<TripModel> trips = tripService.findTripsByStartAndEndStationNormalType(startStationId, endStationId);

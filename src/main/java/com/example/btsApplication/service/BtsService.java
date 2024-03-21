@@ -29,13 +29,7 @@ public class BtsService {
         Optional<BtsEntity> btsEntity = btsRepository.findById(id);
         return btsEntity.map(this::convertToModel).orElse(null);
     }
-    public List<BtsModel> getAll() {
-        List<BtsEntity> btsEntities = btsRepository.findAll();
-        List<BtsModel> btsModels = btsEntities.stream()
-                .map(this::convertToModel)
-                .collect(Collectors.toList());
-        return btsModels;
-    }
+
     private BtsModel convertToModel(BtsEntity btsEntity){
         BtsModel btsModel = new BtsModel();
         btsModel.setId(btsEntity.getId());
