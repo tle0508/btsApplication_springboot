@@ -9,7 +9,6 @@ public class BtsModel {
     private Boolean isExtension;
     private LocalDateTime createdDay;
     private LocalDateTime updatedDay;
-
     private String btsStationNameTH;
     private String btsStationNameENG;
     private String idStation;

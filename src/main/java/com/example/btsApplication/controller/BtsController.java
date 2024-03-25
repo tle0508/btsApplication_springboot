@@ -1,7 +1,5 @@
 package com.example.btsApplication.controller;
 
-import com.example.btsApplication.entity.BtsEntity;
-import com.example.btsApplication.entity.PriceEntity;
 import com.example.btsApplication.model.BtsModel;
 import com.example.btsApplication.service.BtsService;
 import org.springframework.beans.factory.annotation.Autowired;

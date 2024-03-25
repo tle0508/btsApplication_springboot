@@ -22,18 +22,12 @@ public class TripController {
         this.tripService = tripService;
     }
 
-    @GetMapping("findTripsByStartAndEndStationNormalType/{startStationId}/{endStationId}")
+    @GetMapping("findTripsByStartAndEndStation/{startStationId}/{endStationId}")
     public ResponseEntity<List<TripModel>> findTripsByStartAndEndStationNormalType(
             @RequestParam Long startStationId,
             @RequestParam Long endStationId) {
-        List<TripModel> trips = tripService.findTripsByStartAndEndStationNormalType(startStationId, endStationId);
+        List<TripModel> trips = tripService.findTripsByStartAndEndStation(startStationId, endStationId);
         return new ResponseEntity<>(trips, HttpStatus.OK);
     }
-    @GetMapping("findTripsByStartAndEndStationSpecialType/{startStationId}/{endStationId}")
-    public ResponseEntity<List<TripModel>> findTripsByStartAndEndStationSpecialType(
-            @RequestParam Long startStationId,
-            @RequestParam Long endStationId) {
-        List<TripModel> trips = tripService.findTripsByStartAndEndStationSpecialType(startStationId, endStationId);
-        return new ResponseEntity<>(trips, HttpStatus.OK);
-    }
+
 }

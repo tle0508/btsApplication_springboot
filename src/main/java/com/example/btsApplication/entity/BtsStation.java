@@ -2,12 +2,11 @@ package com.example.btsApplication.entity;
 
 import jakarta.persistence.*;
 
-
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "station")
-public class BtsEntity {
+public class BtsStation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -19,25 +18,28 @@ public class BtsEntity {
     @Column(name = "IS_EXTENSION")
     private Boolean isExtension;
 
-    @Column(name = "created_day")
+    @Column(name = "CREATED_DAY")
     private LocalDateTime createdDay;
 
-    @Column(name = "updated_day")
+    @Column(name = "UPDATED_DAY")
     private LocalDateTime updatedDay;
 
-    @Column(name = "bts_station_name_TH")
+    @Column(name = "BTS_STATION_NAME_TH")
     private String btsStationNameTH;
 
-    @Column(name = "bts_station_name_ENG")
+    @Column(name = "BTS_STATION_NAME_ENG")
     private String btsStationNameENG;
 
-    @Column(name = "id_station")
+    @Column(name = "ID_STATION")
     private String idStation;
 
-    @Column(name = "line_color")
+    @Column(name = "LINE_COLOR")
     private String lineColor;
 
-    public BtsEntity(Long id, Boolean isActivate, Boolean isExtension, LocalDateTime createdDay, LocalDateTime updatedDay, String btsStationNameTH, String btsStationNameENG, String idStation, String lineColor) {
+    public BtsStation() {
+    }
+
+    public BtsStation(Long id, Boolean isActivate, Boolean isExtension, LocalDateTime createdDay, LocalDateTime updatedDay, String btsStationNameTH, String btsStationNameENG, String idStation, String lineColor) {
         this.id = id;
         this.isActivate = isActivate;
         this.isExtension = isExtension;
@@ -47,9 +49,6 @@ public class BtsEntity {
         this.btsStationNameENG = btsStationNameENG;
         this.idStation = idStation;
         this.lineColor = lineColor;
-    }
-
-    public BtsEntity() {
     }
 
     public Long getId() {

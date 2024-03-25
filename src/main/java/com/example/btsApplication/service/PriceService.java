@@ -1,7 +1,7 @@
 package com.example.btsApplication.service;
 
 
-import com.example.btsApplication.entity.PriceEntity;
+import com.example.btsApplication.entity.Price;
 import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.repository.PriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,10 @@ public class PriceService {
         this.priceRepository = priceRepository;
     }
 
-    public PriceModel updatePrice(Long id, Integer price) {
-        Optional<PriceEntity> priceEntity = priceRepository.findById(id);
+    public PriceModel updatePrice(Long numOfDistance, int price) {
+        Optional<Price> priceEntity = priceRepository.findByNumOfDistance(numOfDistance);
         if (priceEntity.isPresent()) {
-            PriceEntity existingPriceEntity = priceEntity.get();
+            Price existingPriceEntity = priceEntity.get();
             existingPriceEntity.setPrice(price);
             existingPriceEntity.setUpdatedDay(LocalDateTime.now());
             return convertToModel(priceRepository.save(existingPriceEntity));
@@ -32,22 +32,18 @@ public class PriceService {
             return null;
         }
     }
-
-
     public List<PriceModel> getAllPrices() {
-        List<PriceEntity> priceEntities = priceRepository.findAll();
+        List<Price> priceEntities = priceRepository.findAll();
         return priceEntities.stream()
                 .map(this::convertToModel)
                 .collect(Collectors.toList());
     }
-    private PriceModel convertToModel(PriceEntity priceEntity){
+    private PriceModel convertToModel(Price priceEntity){
         PriceModel priceModel = new PriceModel();
-        priceModel.setId(priceEntity.getId());
+        priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
         priceModel.setCreatedDay(priceEntity.getCreatedDay());
         priceModel.setUpdatedDay(priceEntity.getUpdatedDay());
         priceModel.setPrice(priceEntity.getPrice());
-        // เพิ่มการตั้งค่า distanceModel
-
         return priceModel;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.btsApplication.controller;
 
-import com.example.btsApplication.entity.PriceEntity;
 import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +21,9 @@ public class PriceController {
         this.priceService = priceService;
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PriceModel> updatePrice(@PathVariable Long id, @RequestParam Integer price) {
-        PriceModel priceModel = priceService.updatePrice(id, price);
+    @PutMapping("/{numOfDistance}")
+    public ResponseEntity<PriceModel> updatePrice(@PathVariable Long numOfDistance, @RequestParam Integer price) {
+        PriceModel priceModel = priceService.updatePrice(numOfDistance, price);
         if (priceModel != null) {
             return new ResponseEntity<>(priceModel, HttpStatus.OK);
         } else {

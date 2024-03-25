@@ -1,28 +1,34 @@
-package com.example.btsApplication.model;
+package com.example.btsApplication.entity;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-
-public class PriceModel {
+@Entity
+@Table(name = "price")
+public class Price {
+    @Id
+    @Column(name = "NUM_OF_DISTANCE")
     private Long numOfDistance;
-    private int price;
-    private LocalDateTime createdDay;
-    private LocalDateTime updatedDay;
-    private int priceIncludesExtension;
 
-    public PriceModel() {
+    @Column(name = "PRICE")
+    private int price;
+    @Column(name = "PRICE_INCLUDES_EXTENSION")
+    private Integer priceIncludesExtension;
+
+    @Column(name = "CREATED_DAY", updatable = false)
+    private LocalDateTime createdDay;
+
+    @Column(name = "UPDATED_DAY")
+    private LocalDateTime updatedDay;
+
+    public Price() {
     }
 
-    public PriceModel(Long numOfDistance, int price, LocalDateTime createdDay, LocalDateTime updatedDay, int priceIncludesExtension) {
+    public Price(Long numOfDistance, int price, int priceIncludesExtension, LocalDateTime createdDay, LocalDateTime updatedDay) {
         this.numOfDistance = numOfDistance;
         this.price = price;
+        this.priceIncludesExtension = priceIncludesExtension;
         this.createdDay = createdDay;
         this.updatedDay = updatedDay;
-        this.priceIncludesExtension = priceIncludesExtension;
     }
 
     public Long getNumOfDistance() {
@@ -41,6 +47,14 @@ public class PriceModel {
         this.price = price;
     }
 
+    public int getPriceIncludesExtension() {
+        return priceIncludesExtension;
+    }
+
+    public void setPriceIncludesExtension(int priceIncludesExtension) {
+        this.priceIncludesExtension = priceIncludesExtension;
+    }
+
     public LocalDateTime getCreatedDay() {
         return createdDay;
     }
@@ -55,13 +69,5 @@ public class PriceModel {
 
     public void setUpdatedDay(LocalDateTime updatedDay) {
         this.updatedDay = updatedDay;
-    }
-
-    public int getPriceIncludesExtension() {
-        return priceIncludesExtension;
-    }
-
-    public void setPriceIncludesExtension(int priceIncludesExtension) {
-        this.priceIncludesExtension = priceIncludesExtension;
     }
 }

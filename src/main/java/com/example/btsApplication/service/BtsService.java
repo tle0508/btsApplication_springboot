@@ -1,7 +1,6 @@
 package com.example.btsApplication.service;
 
-import com.example.btsApplication.entity.BtsEntity;
-import com.example.btsApplication.entity.PriceEntity;
+import com.example.btsApplication.entity.BtsStation;
 import com.example.btsApplication.model.BtsModel;
 import com.example.btsApplication.repository.BtsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +18,18 @@ public class BtsService {
         this.btsRepository = btsRepository;
     }
     public List<BtsModel> findByLineColor(String lineColor,boolean isActivate) {
-        List<BtsEntity> btsEntities = btsRepository.findByLineColorAndIsActivate(lineColor, isActivate);
+        List<BtsStation> btsEntities = btsRepository.findByLineColorAndIsActivate(lineColor, isActivate);
         List<BtsModel> btsModels = btsEntities.stream()
                 .map(this::convertToModel)
                 .collect(Collectors.toList());
         return btsModels;
     }
     public BtsModel findById(Long id) {
-        Optional<BtsEntity> btsEntity = btsRepository.findById(id);
+        Optional<BtsStation> btsEntity = btsRepository.findById(id);
         return btsEntity.map(this::convertToModel).orElse(null);
     }
 
-    private BtsModel convertToModel(BtsEntity btsEntity){
+    private BtsModel convertToModel(BtsStation btsEntity){
         BtsModel btsModel = new BtsModel();
         btsModel.setId(btsEntity.getId());
         btsModel.setActivate(btsEntity.getActivate());

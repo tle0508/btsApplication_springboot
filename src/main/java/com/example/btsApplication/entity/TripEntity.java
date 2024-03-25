@@ -9,6 +9,7 @@ public class TripEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //ทำเป็น Long เพราะว่าค่าที่รับเข้ามาเป็น id
     @Column(name = "START_STATION_ID")
     private Long startStationId;
 
@@ -16,13 +17,13 @@ public class TripEntity {
     private Long endStationId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PRICE_ID", referencedColumnName = "id")
-    private PriceEntity price;
+    @JoinColumn(name = "DISTANCE", referencedColumnName = "NUM_OF_DISTANCE")
+    private Price price;
 
     public TripEntity() {
     }
 
-    public TripEntity(Long id, Long startStationId, Long endStationId, PriceEntity price) {
+    public TripEntity(Long id, Long startStationId, Long endStationId, Price price) {
         this.id = id;
         this.startStationId = startStationId;
         this.endStationId = endStationId;
@@ -53,11 +54,11 @@ public class TripEntity {
         this.endStationId = endStationId;
     }
 
-    public PriceEntity getPrice() {
+    public Price getPrice() {
         return price;
     }
 
-    public void setPrice(PriceEntity price) {
+    public void setPrice(Price price) {
         this.price = price;
     }
 }
