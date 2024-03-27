@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/bts")
-@CrossOrigin(origins = "http://localhost:4200")
 public class BtsController {
     private final BtsService btsService;
 
@@ -20,7 +19,7 @@ public class BtsController {
         this.btsService = btsService;
     }
 
-    @GetMapping("/findByLineColor/{lineColor}")
+    @GetMapping("/getStationByLineColor/{lineColor}")
     public ResponseEntity<List<BtsModel>> findByLineColor(@PathVariable String lineColor) {
         List<BtsModel> models = btsService.findByLineColor(lineColor,true);
         if (!models.isEmpty()) {

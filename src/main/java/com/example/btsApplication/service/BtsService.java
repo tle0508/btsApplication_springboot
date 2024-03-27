@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class BtsService {
-    private final  BtsRepository btsRepository;
+    private final BtsRepository btsRepository;
     @Autowired
     public BtsService(BtsRepository btsRepository) {
         this.btsRepository = btsRepository;
@@ -20,16 +20,16 @@ public class BtsService {
     public List<BtsModel> findByLineColor(String lineColor,boolean isActivate) {
         List<BtsStation> btsEntities = btsRepository.findByLineColorAndIsActivate(lineColor, isActivate);
         List<BtsModel> btsModels = btsEntities.stream()
-                .map(this::convertToModel)
+                .map(BtsService::convertToModel)
                 .collect(Collectors.toList());
         return btsModels;
     }
     public BtsModel findById(Long id) {
         Optional<BtsStation> btsEntity = btsRepository.findById(id);
-        return btsEntity.map(this::convertToModel).orElse(null);
+        return btsEntity.map(BtsService::convertToModel).orElse(null);
     }
 
-    private BtsModel convertToModel(BtsStation btsEntity){
+    public static  BtsModel convertToModel(BtsStation btsEntity){
         BtsModel btsModel = new BtsModel();
         btsModel.setId(btsEntity.getId());
         btsModel.setActivate(btsEntity.getActivate());

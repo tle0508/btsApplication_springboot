@@ -2,33 +2,24 @@ package com.example.btsApplication.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Optional;
+
 @Entity
 @Table(name = "trip")
 public class TripEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    //ทำเป็น Long เพราะว่าค่าที่รับเข้ามาเป็น id
-    @Column(name = "START_STATION_ID")
-    private Long startStationId;
-
-    @Column(name = "END_STATION_ID")
-    private Long endStationId;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "DISTANCE", referencedColumnName = "NUM_OF_DISTANCE")
+    @JoinColumn(name = "START_STATION_ID")
+    private BtsStation startStation;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "END_STATION_ID")
+    private BtsStation endStation;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "DISTANCE")
     private Price price;
 
-    public TripEntity() {
-    }
-
-    public TripEntity(Long id, Long startStationId, Long endStationId, Price price) {
-        this.id = id;
-        this.startStationId = startStationId;
-        this.endStationId = endStationId;
-        this.price = price;
-    }
 
     public Long getId() {
         return id;
@@ -38,20 +29,20 @@ public class TripEntity {
         this.id = id;
     }
 
-    public Long getStartStationId() {
-        return startStationId;
+    public BtsStation getStartStation() {
+        return startStation;
     }
 
-    public void setStartStationId(Long startStationId) {
-        this.startStationId = startStationId;
+    public void setStartStation(BtsStation startStation) {
+        this.startStation = startStation;
     }
 
-    public Long getEndStationId() {
-        return endStationId;
+    public BtsStation getEndStation() {
+        return endStation;
     }
 
-    public void setEndStationId(Long endStationId) {
-        this.endStationId = endStationId;
+    public void setEndStation(BtsStation endStation) {
+        this.endStation = endStation;
     }
 
     public Price getPrice() {

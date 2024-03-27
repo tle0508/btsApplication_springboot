@@ -12,17 +12,17 @@ public class PriceModel {
     private int price;
     private LocalDateTime createdDay;
     private LocalDateTime updatedDay;
-    private int priceIncludesExtension;
+
 
     public PriceModel() {
     }
 
-    public PriceModel(Long numOfDistance, int price, LocalDateTime createdDay, LocalDateTime updatedDay, int priceIncludesExtension) {
+    public PriceModel(Long numOfDistance, int price, LocalDateTime createdDay, LocalDateTime updatedDay) {
         this.numOfDistance = numOfDistance;
         this.price = price;
         this.createdDay = createdDay;
         this.updatedDay = updatedDay;
-        this.priceIncludesExtension = priceIncludesExtension;
+
     }
 
     public Long getNumOfDistance() {
@@ -57,11 +57,5 @@ public class PriceModel {
         this.updatedDay = updatedDay;
     }
 
-    public int getPriceIncludesExtension() {
-        return priceIncludesExtension;
-    }
 
-    public void setPriceIncludesExtension(int priceIncludesExtension) {
-        this.priceIncludesExtension = priceIncludesExtension;
-    }
 }

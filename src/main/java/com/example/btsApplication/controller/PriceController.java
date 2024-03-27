@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/prices")
-@CrossOrigin(origins = "http://localhost:4200")
 public class PriceController {
 
     private final PriceService priceService;
@@ -30,7 +29,7 @@ public class PriceController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("/distance/{numOfDistance}")
+    @GetMapping("/getPriceByNumOfDistance/{numOfDistance}")
     public ResponseEntity<PriceModel> getPriceByNumOfDistance(@PathVariable Long numOfDistance) {
         PriceModel priceModel = priceService.findByNumOfDistance(numOfDistance);
         if (priceModel != null) {

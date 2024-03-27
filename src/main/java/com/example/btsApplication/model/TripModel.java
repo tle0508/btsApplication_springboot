@@ -2,18 +2,19 @@ package com.example.btsApplication.model;
 
 public class TripModel {
     private Long id;
-    private BtsModel startStationId;
-    private BtsModel endStationId;
+    private BtsModel startStation;
+    private BtsModel endStation;
     private PriceModel priceModel;
-
+    private long stationDistance;
     public TripModel() {
     }
 
-    public TripModel(Long id, BtsModel startStationId, BtsModel endStationId, PriceModel priceModel) {
+    public TripModel(Long id, BtsModel startStation, BtsModel endStation, PriceModel priceModel, long stationDistance) {
         this.id = id;
-        this.startStationId = startStationId;
-        this.endStationId = endStationId;
+        this.startStation = startStation;
+        this.endStation = endStation;
         this.priceModel = priceModel;
+        this.stationDistance = stationDistance;
     }
 
     public Long getId() {
@@ -24,20 +25,20 @@ public class TripModel {
         this.id = id;
     }
 
-    public BtsModel getStartStationId() {
-        return startStationId;
+    public BtsModel getStartStation() {
+        return startStation;
     }
 
-    public void setStartStationId(BtsModel startStationId) {
-        this.startStationId = startStationId;
+    public void setStartStation(BtsModel startStation) {
+        this.startStation = startStation;
     }
 
-    public BtsModel getEndStationId() {
-        return endStationId;
+    public BtsModel getEndStation() {
+        return endStation;
     }
 
-    public void setEndStationId(BtsModel endStationId) {
-        this.endStationId = endStationId;
+    public void setEndStation(BtsModel endStation) {
+        this.endStation = endStation;
     }
 
     public PriceModel getPriceModel() {
@@ -46,5 +47,13 @@ public class TripModel {
 
     public void setPriceModel(PriceModel priceModel) {
         this.priceModel = priceModel;
+    }
+
+    public long getStationDistance() {
+        return stationDistance;
+    }
+
+    public void setStationDistance(long stationDistance) {
+        this.stationDistance = stationDistance;
     }
 }

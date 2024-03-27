@@ -36,21 +36,6 @@ public class BtsStation {
     @Column(name = "LINE_COLOR")
     private String lineColor;
 
-    public BtsStation() {
-    }
-
-    public BtsStation(Long id, Boolean isActivate, Boolean isExtension, LocalDateTime createdDay, LocalDateTime updatedDay, String btsStationNameTH, String btsStationNameENG, String idStation, String lineColor) {
-        this.id = id;
-        this.isActivate = isActivate;
-        this.isExtension = isExtension;
-        this.createdDay = createdDay;
-        this.updatedDay = updatedDay;
-        this.btsStationNameTH = btsStationNameTH;
-        this.btsStationNameENG = btsStationNameENG;
-        this.idStation = idStation;
-        this.lineColor = lineColor;
-    }
-
     public Long getId() {
         return id;
     }

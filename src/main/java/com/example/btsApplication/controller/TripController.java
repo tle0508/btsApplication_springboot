@@ -1,6 +1,7 @@
 package com.example.btsApplication.controller;
 
 import com.example.btsApplication.entity.TripEntity;
+import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.model.TripModel;
 import com.example.btsApplication.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/trip")
-@CrossOrigin(origins = "http://localhost:4200")
 public class TripController {
 
     private final TripService tripService;
@@ -22,11 +22,11 @@ public class TripController {
         this.tripService = tripService;
     }
 
-    @GetMapping("findTripsByStartAndEndStation/{startStationId}/{endStationId}")
-    public ResponseEntity<List<TripModel>> findTripsByStartAndEndStationNormalType(
+    @GetMapping("getTripsByStartAndEndStationId/{startStationId}/{endStationId}")
+    public ResponseEntity<List<TripModel>> findTripsByStartAndEndStationId(
             @RequestParam Long startStationId,
             @RequestParam Long endStationId) {
-        List<TripModel> trips = tripService.findTripsByStartAndEndStation(startStationId, endStationId);
+        List<TripModel> trips = tripService.findTripsByStartAndEndStationId(startStationId, endStationId);
         return new ResponseEntity<>(trips, HttpStatus.OK);
     }
 

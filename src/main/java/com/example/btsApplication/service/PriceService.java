@@ -1,6 +1,5 @@
 package com.example.btsApplication.service;
 
-
 import com.example.btsApplication.entity.Price;
 import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.repository.PriceRepository;
@@ -24,26 +23,25 @@ public class PriceService {
     public PriceModel updatePrice(Long numOfDistance, int price) {
         Optional<Price> priceEntity = priceRepository.findByNumOfDistance(numOfDistance);
         if (priceEntity.isPresent()) {
-            Price existingPriceEntity = priceEntity.get();
-            existingPriceEntity.setPrice(price);
-            existingPriceEntity.setUpdatedDay(LocalDateTime.now());
-            return convertToModel(priceRepository.save(existingPriceEntity));
+            Price updatePriceEntity = priceEntity.get();
+            updatePriceEntity.setPrice(price);
+            updatePriceEntity.setUpdatedDay(LocalDateTime.now());
+            return convertToModel(priceRepository.save(updatePriceEntity));
         } else {
             return null;
         }
     }
     public PriceModel findByNumOfDistance(Long numOfDistance) {
         Optional<Price> priceEntity = priceRepository.findByNumOfDistance(numOfDistance);
-        return priceEntity.map(this::convertToModel).orElse(null);
+        return priceEntity.map(PriceService::convertToModel).orElse(null);
     }
-
     public List<PriceModel> getAllPrices() {
         List<Price> priceEntities = priceRepository.findAll();
         return priceEntities.stream()
-                .map(this::convertToModel)
+                .map(PriceService::convertToModel)
                 .collect(Collectors.toList());
     }
-    private PriceModel convertToModel(Price priceEntity){
+    private static PriceModel convertToModel(Price priceEntity){
         PriceModel priceModel = new PriceModel();
         priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
         priceModel.setCreatedDay(priceEntity.getCreatedDay());
