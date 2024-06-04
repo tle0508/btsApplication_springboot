@@ -1,15 +1,14 @@
 package com.example.btsApplication.model;
 
-
 import java.time.LocalDateTime;
 
-public class PriceModel {
+public class PriceExtensionModel {
     private Long numOfDistance;
     private int price;
     private LocalDateTime createdDay;
     private LocalDateTime updatedDay;
 
-    public PriceModel() {
+    public PriceExtensionModel() {
     }
 
     public Long getNumOfDistance() {

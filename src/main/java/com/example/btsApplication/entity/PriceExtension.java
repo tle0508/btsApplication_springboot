@@ -1,16 +1,19 @@
-package com.example.btsApplication.model;
+package com.example.btsApplication.entity;
 
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-
-public class PriceModel {
+@Entity
+@Table(name = "price_extension")
+public class PriceExtension {
+    @Id
+    @Column(name = "NUM_OF_DISTANCE")
     private Long numOfDistance;
+    @Column(name = "PRICE")
     private int price;
+    @Column(name = "CREATED_DAY", updatable = false)
     private LocalDateTime createdDay;
+    @Column(name = "UPDATED_DAY")
     private LocalDateTime updatedDay;
-
-    public PriceModel() {
-    }
 
     public Long getNumOfDistance() {
         return numOfDistance;
@@ -36,6 +39,4 @@ public class PriceModel {
     public void setUpdatedDay(LocalDateTime updatedDay) {
         this.updatedDay = updatedDay;
     }
-
-
 }

@@ -30,15 +30,7 @@ public class PriceController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("/getPriceByNumOfDistance/{numOfDistance}")
-    public ResponseEntity<PriceModel> getPriceByNumOfDistance(@PathVariable Long numOfDistance) {
-        PriceModel priceModel = priceService.findByNumOfDistance(numOfDistance);
-        if (priceModel != null) {
-            return ResponseEntity.ok(priceModel);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+    
 
 //
     @GetMapping("getAllPrices")

@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface PriceRepository  extends JpaRepository<Price, Long> {
     Optional<Price> findByNumOfDistance(Long numOfDistance);
+    
 }

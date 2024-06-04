@@ -31,10 +31,7 @@ public class PriceService {
             return null;
         }
     }
-    public PriceModel findByNumOfDistance(Long numOfDistance) {
-        Optional<Price> priceEntity = priceRepository.findByNumOfDistance(numOfDistance);
-        return priceEntity.map(PriceService::convertToModel).orElse(null);
-    }
+   
     public List<PriceModel> getAllPrices() {
         List<Price> priceEntities = priceRepository.findAll();
         return priceEntities.stream()
