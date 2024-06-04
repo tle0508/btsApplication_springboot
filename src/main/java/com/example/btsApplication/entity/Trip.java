@@ -2,11 +2,9 @@ package com.example.btsApplication.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Optional;
-
 @Entity
-@Table(name = "trip")
-public class TripEntity {
+@Table(name = "tripnormal")
+public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

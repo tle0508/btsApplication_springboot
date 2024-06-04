@@ -13,46 +13,30 @@ public class PriceModel {
     private LocalDateTime createdDay;
     private LocalDateTime updatedDay;
 
-
     public PriceModel() {
-    }
-
-    public PriceModel(Long numOfDistance, int price, LocalDateTime createdDay, LocalDateTime updatedDay) {
-        this.numOfDistance = numOfDistance;
-        this.price = price;
-        this.createdDay = createdDay;
-        this.updatedDay = updatedDay;
-
     }
 
     public Long getNumOfDistance() {
         return numOfDistance;
     }
-
     public void setNumOfDistance(Long numOfDistance) {
         this.numOfDistance = numOfDistance;
     }
-
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
-
     public LocalDateTime getCreatedDay() {
         return createdDay;
     }
-
     public void setCreatedDay(LocalDateTime createdDay) {
         this.createdDay = createdDay;
     }
-
     public LocalDateTime getUpdatedDay() {
         return updatedDay;
     }
-
     public void setUpdatedDay(LocalDateTime updatedDay) {
         this.updatedDay = updatedDay;
     }

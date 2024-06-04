@@ -17,16 +17,11 @@ public class BtsService {
     public BtsService(BtsRepository btsRepository) {
         this.btsRepository = btsRepository;
     }
-    public List<BtsModel> findByLineColor(String lineColor,boolean isActivate) {
+    public List<BtsModel> getStationByLineColor(String lineColor,boolean isActivate) {
         List<BtsStation> btsEntities = btsRepository.findByLineColorAndIsActivate(lineColor, isActivate);
-        List<BtsModel> btsModels = btsEntities.stream()
+        return btsEntities.stream()
                 .map(BtsService::convertToModel)
                 .collect(Collectors.toList());
-        return btsModels;
-    }
-    public BtsModel findById(Long id) {
-        Optional<BtsStation> btsEntity = btsRepository.findById(id);
-        return btsEntity.map(BtsService::convertToModel).orElse(null);
     }
 
     public static  BtsModel convertToModel(BtsStation btsEntity){

@@ -1,6 +1,6 @@
 package com.example.btsApplication.service;
 
-import com.example.btsApplication.entity.TripEntity;
+import com.example.btsApplication.entity.Trip;
 import com.example.btsApplication.model.BtsModel;
 import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.model.TripModel;
@@ -17,7 +17,7 @@ public class TripService {
     public TripService(TripRepository tripRepository) {
         this.tripRepository = tripRepository;
     }
-    private static TripModel convertToModel(TripEntity tripEntity) {
+    private static TripModel convertToModel(Trip tripEntity) {
         TripModel tripModel = new TripModel();
         tripModel.setId(tripEntity.getId());
 
@@ -35,8 +35,8 @@ public class TripService {
 
         return tripModel;
     }
-    public List<TripModel> findTripsByStartAndEndStationId(Long startStationId, Long endStationId) {
-        List<TripEntity> tripEntities = tripRepository.findByStartStation_IdAndEndStation_Id(startStationId, endStationId);
+    public List<TripModel> getTripsByStartAndEndStationId(Long startStationId, Long endStationId) {
+        List<Trip> tripEntities = tripRepository.findByStartStation_IdAndEndStation_Id(startStationId, endStationId);
         return tripEntities.stream()
                 .map(TripService::convertToModel)
                 .collect(Collectors.toList());
