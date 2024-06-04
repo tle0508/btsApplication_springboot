@@ -20,35 +20,27 @@ public class TripEntity {
     @JoinColumn(name = "DISTANCE")
     private Price price;
 
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public BtsStation getStartStation() {
         return startStation;
     }
-
     public void setStartStation(BtsStation startStation) {
         this.startStation = startStation;
     }
-
     public BtsStation getEndStation() {
         return endStation;
     }
-
     public void setEndStation(BtsStation endStation) {
         this.endStation = endStation;
     }
-
     public Price getPrice() {
         return price;
     }
-
     public void setPrice(Price price) {
         this.price = price;
     }
