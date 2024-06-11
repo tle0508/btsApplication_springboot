@@ -36,6 +36,7 @@ public class TripExtensionService {
         priceModel.setUpdatedDay(tripEntity.getPriceExtension().getUpdatedDay());
         tripModel.setPriceExtensionModel(priceModel);
 
+        tripModel.setTime(tripEntity.getTime());
         return tripModel;
     }
     public List<TripExtensionModel> getTripsByStartAndEndStationId(Long startStationId, Long endStationId) {

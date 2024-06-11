@@ -17,7 +17,9 @@ public class Trip {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DISTANCE")
     private Price price;
-
+    @Column(name ="TIME")
+    private String time;
+    
     public Long getId() {
         return id;
     }
@@ -41,5 +43,11 @@ public class Trip {
     }
     public void setPrice(Price price) {
         this.price = price;
+    }
+    public String getTime() {
+        return time;
+    }
+    public void setTime(String time) {
+        this.time = time;
     }
 }

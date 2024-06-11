@@ -5,7 +5,8 @@ public class TripModel {
     private BtsModel startStation;
     private BtsModel endStation;
     private PriceModel priceModel;
-
+    private String time;
+    
     public TripModel() {
     }
 
@@ -32,5 +33,13 @@ public class TripModel {
     }
     public void setPriceModel(PriceModel priceModel) {
         this.priceModel = priceModel;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

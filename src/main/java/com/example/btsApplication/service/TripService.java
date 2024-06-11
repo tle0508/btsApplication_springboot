@@ -31,7 +31,9 @@ public class TripService {
         priceModel.setCreatedDay(tripEntity.getPrice().getCreatedDay());
         priceModel.setUpdatedDay(tripEntity.getPrice().getUpdatedDay());
         tripModel.setPriceModel(priceModel);
-
+        
+        tripModel.setTime(tripEntity.getTime());
+        
         return tripModel;
     }
     public List<TripModel> getTripsByStartAndEndStationId(Long startStationId, Long endStationId) {

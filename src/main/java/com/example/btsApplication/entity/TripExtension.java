@@ -19,7 +19,9 @@ public class TripExtension {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DISTANCE")
     private PriceExtension priceExtension;
-
+    @Column(name ="TIME")
+    private String time;
+    
     public Long getId() {
         return id;
     }
@@ -44,6 +46,12 @@ public class TripExtension {
 	public void setPriceExtension(PriceExtension priceExtension) {
 		this.priceExtension = priceExtension;
 	}
+    public String getTime() {
+        return time;
+    }
+    public void setTime(String time) {
+        this.time = time;
+    }
 	
 	
   
