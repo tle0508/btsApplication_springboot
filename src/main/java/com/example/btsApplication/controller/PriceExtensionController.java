@@ -20,8 +20,8 @@ public class PriceExtensionController {
     }
 
   
-    @PutMapping("/{numOfDistance}")
-    public ResponseEntity<PriceExtensionModel> updatePrice(@PathVariable Long numOfDistance, @RequestParam Integer price) {
+    @PutMapping("/{numOfDistance}/{price}")
+    public ResponseEntity<PriceExtensionModel> updatePrice(@PathVariable Long numOfDistance, @PathVariable Integer price) {
         PriceExtensionModel priceModel = priceExtensionService.updatePrice(numOfDistance, price);
             return new ResponseEntity<>(priceModel, HttpStatus.OK);      
     }

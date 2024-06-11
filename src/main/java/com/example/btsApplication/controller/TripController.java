@@ -21,8 +21,8 @@ public class TripController {
 
     @GetMapping("getTripsByStartAndEndStationId/{startStationId}/{endStationId}")
     public ResponseEntity<List<TripModel>> getTripsByStartAndEndStationId(
-            @RequestParam Long startStationId,
-            @RequestParam Long endStationId) {
+            @PathVariable Long startStationId,
+            @PathVariable Long endStationId) {
         List<TripModel> trips = tripService.getTripsByStartAndEndStationId(startStationId, endStationId);
         return new ResponseEntity<>(trips, HttpStatus.OK);
     }

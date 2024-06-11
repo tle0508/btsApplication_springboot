@@ -18,8 +18,6 @@ public class BtsController {
         this.btsService = btsService;
     }
 
-    
-
     @GetMapping("/getStationByLineColor/{lineColor}")
     public ResponseEntity<List<BtsModel>> getStationByLineColor(@PathVariable String lineColor) {
         List<BtsModel> models = btsService.getStationByLineColor(lineColor,true);
