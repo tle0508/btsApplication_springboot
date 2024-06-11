@@ -28,10 +28,6 @@ public class BtsController {
     @GetMapping("/getStationByLineColor/{lineColor}")
     public ResponseEntity<List<BtsModel>> getStationByLineColor(@PathVariable String lineColor) {
         List<BtsModel> models = btsService.getStationByLineColor(lineColor,true);
-        if (!models.isEmpty()) {
             return new ResponseEntity<>(models, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
     }
 }

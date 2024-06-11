@@ -20,19 +20,14 @@ public class PriceExtensionController {
         this.priceExtensionService = priceExtensionService;
     }
 
-    //
+  
     @PutMapping("/{numOfDistance}")
     public ResponseEntity<PriceExtensionModel> updatePrice(@PathVariable Long numOfDistance, @RequestParam Integer price) {
         PriceExtensionModel priceModel = priceExtensionService.updatePrice(numOfDistance, price);
-        if (priceModel != null) {
-            return new ResponseEntity<>(priceModel, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+            return new ResponseEntity<>(priceModel, HttpStatus.OK);      
     }
  
 
-//
     @GetMapping("getAllPrices")
     public ResponseEntity<List<PriceExtensionModel>> getAllPrices() {
         List<PriceExtensionModel> prices = priceExtensionService.getAllPrices();
