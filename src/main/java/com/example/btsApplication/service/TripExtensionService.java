@@ -8,7 +8,7 @@ import com.example.btsApplication.model.TripExtensionModel;
 
 import com.example.btsApplication.repository.TripExtensionRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Service
 public class TripExtensionService {
     private final TripExtensionRepository tripExtensionRepository;
-    @Autowired
+    
     public TripExtensionService(TripExtensionRepository tripExtensionRepository) {
         this.tripExtensionRepository = tripExtensionRepository;
     }

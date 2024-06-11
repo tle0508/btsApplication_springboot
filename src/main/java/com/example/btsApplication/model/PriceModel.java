@@ -4,6 +4,7 @@ package com.example.btsApplication.model;
 import java.time.LocalDateTime;
 
 public class PriceModel {
+    private int id;
     private Long numOfDistance;
     private int price;
     private LocalDateTime createdDay;
@@ -35,6 +36,14 @@ public class PriceModel {
     }
     public void setUpdatedDay(LocalDateTime updatedDay) {
         this.updatedDay = updatedDay;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 

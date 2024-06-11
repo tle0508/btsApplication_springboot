@@ -2,7 +2,7 @@ package com.example.btsApplication.controller;
 
 import com.example.btsApplication.model.TripExtensionModel;
 import com.example.btsApplication.service.TripExtensionService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,6 @@ public class TripExtensionController {
 
     private final TripExtensionService tripExtensiopnService;
 
-    @Autowired
     public TripExtensionController(TripExtensionService tripExtensiopnService) {
         this.tripExtensiopnService = tripExtensiopnService;
     }

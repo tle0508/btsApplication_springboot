@@ -3,8 +3,11 @@ package com.example.btsApplication.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 @Entity
-@Table(name = "price_extension")
+@Table(name = "prices_extension")
 public class PriceExtension {
+    
+    @Column(name = "ID")
+    private int id;
     @Id
     @Column(name = "NUM_OF_DISTANCE")
     private Long numOfDistance;
@@ -38,5 +41,11 @@ public class PriceExtension {
     }
     public void setUpdatedDay(LocalDateTime updatedDay) {
         this.updatedDay = updatedDay;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 }

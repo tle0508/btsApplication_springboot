@@ -2,7 +2,6 @@ package com.example.btsApplication.controller;
 
 import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.service.PriceService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,7 @@ public class PriceController {
 
     private final PriceService priceService;
 
-    @Autowired
+   
     public PriceController(PriceService priceService) {
         this.priceService = priceService;
     }

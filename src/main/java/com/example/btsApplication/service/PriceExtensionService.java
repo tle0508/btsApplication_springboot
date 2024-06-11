@@ -4,7 +4,6 @@ package com.example.btsApplication.service;
 import com.example.btsApplication.entity.PriceExtension;
 import com.example.btsApplication.model.PriceExtensionModel;
 import com.example.btsApplication.repository.PriceExtensionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 public class PriceExtensionService {
     private final PriceExtensionRepository priceExtensionRepository;
 
-    @Autowired
+  
     public PriceExtensionService(PriceExtensionRepository priceExtensionRepository) {
         this.priceExtensionRepository = priceExtensionRepository;
     }
@@ -39,8 +38,10 @@ public class PriceExtensionService {
                 .map(PriceExtensionService::convertToModel)
                 .collect(Collectors.toList());
     }
+    
     private static PriceExtensionModel convertToModel(PriceExtension priceEntity){
         PriceExtensionModel priceModel = new PriceExtensionModel();
+        priceModel.setId(priceEntity.getId());
         priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
         priceModel.setCreatedDay(priceEntity.getCreatedDay());
         priceModel.setUpdatedDay(priceEntity.getUpdatedDay());

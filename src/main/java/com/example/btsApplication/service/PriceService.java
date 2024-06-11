@@ -3,7 +3,6 @@ package com.example.btsApplication.service;
 import com.example.btsApplication.entity.Price;
 import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.repository.PriceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,7 +14,7 @@ import java.util.stream.Collectors;
 public class PriceService {
     private final PriceRepository priceRepository;
 
-    @Autowired
+  
     public PriceService(PriceRepository priceRepository) {
         this.priceRepository = priceRepository;
     }
@@ -40,6 +39,7 @@ public class PriceService {
     }
     private static PriceModel convertToModel(Price priceEntity){
         PriceModel priceModel = new PriceModel();
+        priceModel.setId(priceEntity.getId());
         priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
         priceModel.setCreatedDay(priceEntity.getCreatedDay());
         priceModel.setUpdatedDay(priceEntity.getUpdatedDay());

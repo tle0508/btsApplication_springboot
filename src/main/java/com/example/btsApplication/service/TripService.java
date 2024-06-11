@@ -5,7 +5,6 @@ import com.example.btsApplication.model.BtsModel;
 import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.model.TripModel;
 import com.example.btsApplication.repository.TripRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class TripService {
     private final TripRepository tripRepository;
-    @Autowired
+  
     public TripService(TripRepository tripRepository) {
         this.tripRepository = tripRepository;
     }
