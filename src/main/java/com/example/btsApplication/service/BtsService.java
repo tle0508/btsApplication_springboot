@@ -33,6 +33,7 @@ public class BtsService {
         btsModel.setUpdatedDay(btsEntity.getUpdatedDay());
         btsModel.setLineColor(btsEntity.getLineColor());
         btsModel.setIdStation(btsEntity.getIdStation());
+        btsModel.setUrl(btsEntity.getUrl());
        return btsModel;
     }
 }

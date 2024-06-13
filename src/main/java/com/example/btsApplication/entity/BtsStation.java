@@ -27,7 +27,15 @@ public class BtsStation {
     private String idStation;
     @Column(name = "LINE_COLOR")
     private String lineColor;
+    @Column(name = "URL")
+    private String url;
 
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
     public Long getId() {
         return id;
     }
