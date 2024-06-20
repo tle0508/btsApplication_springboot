@@ -7,6 +7,7 @@ import com.example.btsApplication.model.TripModel;
 import com.example.btsApplication.repository.TripRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +27,7 @@ public class TripService {
         tripModel.setEndStation(endStation);
 
         PriceModel priceModel = new PriceModel();
+        priceModel.setId(tripEntity.getPrice().getId());
         priceModel.setNumOfDistance(tripEntity.getPrice().getNumOfDistance());
         priceModel.setPrice(tripEntity.getPrice().getPrice());
         priceModel.setCreatedDay(tripEntity.getPrice().getCreatedDay());
@@ -36,10 +38,15 @@ public class TripService {
         
         return tripModel;
     }
+    //
     public List<TripModel> getTripsByStartAndEndStationId(Long startStationId, Long endStationId) {
         List<Trip> tripEntities = tripRepository.findByStartStation_IdAndEndStation_Id(startStationId, endStationId);
         return tripEntities.stream()
                 .map(TripService::convertToModel)
                 .collect(Collectors.toList());
+    }
+
+    public Optional<Trip> findByid(Long id){
+        return tripRepository.findById(id);
     }
 }

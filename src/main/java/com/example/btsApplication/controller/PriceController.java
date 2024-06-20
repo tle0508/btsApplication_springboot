@@ -19,7 +19,7 @@ public class PriceController {
         this.priceService = priceService;
     }
 
-   
+   //
     @PutMapping("/{numOfDistance}/{price}")
     public ResponseEntity<PriceModel> updatePrice(@PathVariable Long numOfDistance, @PathVariable Integer price) {
         PriceModel priceModel = priceService.updatePrice(numOfDistance, price);     

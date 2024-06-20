@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
 
 @RestController
 @RequestMapping("/api/trip")
@@ -26,5 +29,4 @@ public class TripController {
         List<TripModel> trips = tripService.getTripsByStartAndEndStationId(startStationId, endStationId);
         return new ResponseEntity<>(trips, HttpStatus.OK);
     }
-
 }
