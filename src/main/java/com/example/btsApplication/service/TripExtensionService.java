@@ -11,6 +11,7 @@ import com.example.btsApplication.repository.TripExtensionRepository;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,10 +36,8 @@ public class TripExtensionService {
         tripModel.setTime(tripEntity.getTime());
         return tripModel;
     }
-    public List<TripExtensionModel> getTripsByStartAndEndStationId(Long startStationId, Long endStationId) {
-        List<TripExtension> tripEntities = tripExtensionRepository.findByStartStation_IdAndEndStation_Id(startStationId, endStationId);
-        return tripEntities.stream()
-                .map(TripExtensionService::convertToModel)
-                .collect(Collectors.toList());
+    public Optional<TripExtensionModel> getTripsByStartAndEndStationId(Long startStationId, Long endStationId) {
+        Optional<TripExtension> tripEntities = tripExtensionRepository.findByStartStation_IdAndEndStation_Id(startStationId, endStationId);
+        return tripEntities.map(TripExtensionService::convertToModel);
     }
 }

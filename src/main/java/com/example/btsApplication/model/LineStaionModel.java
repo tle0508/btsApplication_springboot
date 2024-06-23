@@ -4,18 +4,13 @@ import java.time.LocalDateTime;
 
 
 public class LineStaionModel {
-	private Long id;
-   
-    private String lineStationNameTH;
-    
-    private String lineStationNameENG;
-	
+	private Long id;   
+    private String lineStationNameTH;   
+    private String lineStationNameENG;	
     private String color;
-    
-    private LocalDateTime createdDay;
-   
+    private LocalDateTime createdDay; 
     private LocalDateTime updatedDay;
-
+	
 	public Long getId() {
 		return id;
 	}

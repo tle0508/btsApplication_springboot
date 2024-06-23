@@ -19,8 +19,8 @@ public class LineStationService {
     }
 
     public Optional<LineStaionModel> findById(Long id) {
-        Optional<LineStaion> lineStaionOptional = lineStationRepository.findById(id);
-        return lineStaionOptional.map(LineStationService::convertToModel);
+        Optional<LineStaion> lineStaion = lineStationRepository.findById(id);
+        return lineStaion.map(LineStationService::convertToModel);
     }
  
      public static  LineStaionModel convertToModel(LineStaion lineStaion){

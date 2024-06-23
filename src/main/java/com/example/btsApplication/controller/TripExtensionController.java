@@ -3,11 +3,11 @@ package com.example.btsApplication.controller;
 import com.example.btsApplication.model.TripExtensionModel;
 import com.example.btsApplication.service.TripExtensionService;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/tripExtension")
@@ -20,11 +20,12 @@ public class TripExtensionController {
     }
 
     @GetMapping("TripsByStartAndEndStationId/{startStationId}/{endStationId}")
-    public ResponseEntity<List<TripExtensionModel>> getTripsByStartAndEndStationId(
+    public ResponseEntity<TripExtensionModel> getTripsByStartAndEndStationId(
             @PathVariable Long startStationId,
             @PathVariable Long endStationId) {
-        List<TripExtensionModel> trips = tripExtensiopnService.getTripsByStartAndEndStationId(startStationId, endStationId);
-        return new ResponseEntity<>(trips, HttpStatus.OK);
+        Optional<TripExtensionModel> trips = tripExtensiopnService.getTripsByStartAndEndStationId(startStationId, endStationId);
+        return trips.map(ResponseEntity::ok)
+                                      .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }
