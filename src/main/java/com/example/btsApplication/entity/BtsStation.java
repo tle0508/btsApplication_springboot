@@ -25,8 +25,7 @@ public class BtsStation {
     private String btsStationNameENG;
     @Column(name = "ID_STATION")
     private String idStation;
-    @Column(name = "LINE_COLOR")
-    private String lineColor;
+    
     @Column(name = "URL")
     private String url;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -93,10 +92,5 @@ public class BtsStation {
     public void setIdStation(String idStation) {
         this.idStation = idStation;
     }
-    public String getLineColor() {
-        return lineColor;
-    }
-    public void setLineColor(String lineColor) {
-        this.lineColor = lineColor;
-    }
+   
 }

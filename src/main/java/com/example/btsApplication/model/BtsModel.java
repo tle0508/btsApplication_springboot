@@ -12,7 +12,7 @@ public class BtsModel {
     private String btsStationNameTH;
     private String btsStationNameENG;
     private String idStation;
-    private String lineColor;
+    
     private String url;
     private LineStaionModel lineStaionModel;
     
@@ -76,11 +76,5 @@ public class BtsModel {
     }
     public void setIdStation(String idStation) {
         this.idStation = idStation;
-    }
-    public String getLineColor() {
-        return lineColor;
-    }
-    public void setLineColor(String lineColor) {
-        this.lineColor = lineColor;
     }
 }

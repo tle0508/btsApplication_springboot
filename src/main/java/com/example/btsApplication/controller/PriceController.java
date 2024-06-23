@@ -26,7 +26,7 @@ public class PriceController {
             return new ResponseEntity<>(priceModel, HttpStatus.OK);   
     }
 
-    @GetMapping("getAllPrices")
+    @GetMapping("AllPrices")
     public ResponseEntity<List<PriceModel>> getAllPrices() {
         List<PriceModel> prices = priceService.getAllPrices();
         return new ResponseEntity<>(prices, HttpStatus.OK);

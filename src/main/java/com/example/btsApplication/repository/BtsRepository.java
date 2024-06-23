@@ -7,5 +7,5 @@ import java.util.List;
 
 
 public interface BtsRepository extends JpaRepository<BtsStation, Long> {
-    List<BtsStation> findByLineColorAndIsActivate(String lineColor, boolean isActivate);
+    List<BtsStation> findByLineStaionIdAndIsActivate(long lineStationId, boolean isActivate);
 }

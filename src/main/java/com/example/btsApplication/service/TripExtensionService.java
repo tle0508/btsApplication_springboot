@@ -2,8 +2,8 @@ package com.example.btsApplication.service;
 
 import com.example.btsApplication.entity.TripExtension;
 import com.example.btsApplication.model.BtsModel;
-import com.example.btsApplication.model.PriceExtensionModel;
 
+import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.model.TripExtensionModel;
 
 import com.example.btsApplication.repository.TripExtensionRepository;
@@ -29,12 +29,8 @@ public class TripExtensionService {
         tripModel.setStartStation(startStation);
         tripModel.setEndStation(endStation);
 
-        PriceExtensionModel priceModel = new PriceExtensionModel();
-        priceModel.setNumOfDistance(tripEntity.getPriceExtension().getNumOfDistance());
-        priceModel.setPrice(tripEntity.getPriceExtension().getPrice());
-        priceModel.setCreatedDay(tripEntity.getPriceExtension().getCreatedDay());
-        priceModel.setUpdatedDay(tripEntity.getPriceExtension().getUpdatedDay());
-        tripModel.setPriceExtensionModel(priceModel);
+        PriceModel price = PriceExtensionService.convertToModel(tripEntity.getPriceExtension());
+        tripModel.setPriceModel(price);
 
         tripModel.setTime(tripEntity.getTime());
         return tripModel;

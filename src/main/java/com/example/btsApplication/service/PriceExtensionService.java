@@ -1,7 +1,8 @@
 package com.example.btsApplication.service;
 
 import com.example.btsApplication.entity.PriceExtension;
-import com.example.btsApplication.model.PriceExtensionModel;
+
+import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.repository.PriceExtensionRepository;
 
 import org.springframework.http.HttpStatus;
@@ -21,9 +22,9 @@ public class PriceExtensionService {
         this.priceExtensionRepository = priceExtensionRepository;
     }
 
-    public PriceExtensionModel updatePrice(Long numOfDistance, int price) {
+    public PriceModel updatePrice(Long numOfDistance, int price) {
         Optional<PriceExtension> priceEntity = priceExtensionRepository.findByNumOfDistance(numOfDistance);
-        if (price < 100 && price > 0) {
+        if (price < 100 && price >= 0) {
             if (priceEntity.isPresent()) {
                 PriceExtension updatePriceEntity = priceEntity.get();
                 updatePriceEntity.setPrice(price);
@@ -36,15 +37,15 @@ public class PriceExtensionService {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect price");
     }
 
-    public List<PriceExtensionModel> getAllPrices() {
+    public List<PriceModel> getAllPrices() {
         List<PriceExtension> priceEntities = priceExtensionRepository.findAll();
         return priceEntities.stream()
                 .map(PriceExtensionService::convertToModel)
                 .collect(Collectors.toList());
     }
 
-    private static PriceExtensionModel convertToModel(PriceExtension priceEntity) {
-        PriceExtensionModel priceModel = new PriceExtensionModel();
+    public static PriceModel convertToModel(PriceExtension priceEntity) {
+        PriceModel priceModel = new PriceModel();
         priceModel.setId(priceEntity.getId());
         priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
         priceModel.setCreatedDay(priceEntity.getCreatedDay());

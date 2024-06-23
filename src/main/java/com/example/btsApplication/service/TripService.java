@@ -26,13 +26,8 @@ public class TripService {
         tripModel.setStartStation(startStation);
         tripModel.setEndStation(endStation);
 
-        PriceModel priceModel = new PriceModel();
-        priceModel.setId(tripEntity.getPrice().getId());
-        priceModel.setNumOfDistance(tripEntity.getPrice().getNumOfDistance());
-        priceModel.setPrice(tripEntity.getPrice().getPrice());
-        priceModel.setCreatedDay(tripEntity.getPrice().getCreatedDay());
-        priceModel.setUpdatedDay(tripEntity.getPrice().getUpdatedDay());
-        tripModel.setPriceModel(priceModel);
+        PriceModel price = PriceService.convertToModel(tripEntity.getPrice());
+        tripModel.setPriceModel(price);
         
         tripModel.setTime(tripEntity.getTime());
         

@@ -24,7 +24,7 @@ public class PriceService {
 
     public PriceModel updatePrice(Long numOfDistance, int price) {
         Optional<Price> priceEntity = priceRepository.findByNumOfDistance(numOfDistance);
-        if(price < 100 && price > 0){
+        if(price < 100 && price >= 0){
             if (priceEntity.isPresent()) {
                 Price updatePriceEntity = priceEntity.get();
                 updatePriceEntity.setPrice(price);
@@ -43,7 +43,7 @@ public class PriceService {
                 .map(PriceService::convertToModel)
                 .collect(Collectors.toList());
     }
-    private static PriceModel convertToModel(Price priceEntity){
+    public static PriceModel convertToModel(Price priceEntity){
         PriceModel priceModel = new PriceModel();
         priceModel.setId(priceEntity.getId());
         priceModel.setNumOfDistance(priceEntity.getNumOfDistance());

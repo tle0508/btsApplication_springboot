@@ -16,11 +16,12 @@ public class BtsService {
     public BtsService(BtsRepository btsRepository) {
         this.btsRepository = btsRepository;
     }
-    public List<BtsModel> getStationByLineColor(String lineColor,boolean isActivate) {
-        List<BtsStation> btsEntities = btsRepository.findByLineColorAndIsActivate(lineColor, isActivate);
-        return btsEntities.stream()
-                .map(BtsService::convertToModel)
-                .collect(Collectors.toList());
+
+    public List<BtsModel> getStationByLineStationID(Long lineStationId,boolean isActivate) {
+        List<BtsStation> btsStations = btsRepository.findByLineStaionIdAndIsActivate(lineStationId,isActivate);
+        return btsStations.stream()
+                          .map(BtsService::convertToModel)
+                          .collect(Collectors.toList());
     }
     
 
@@ -33,7 +34,6 @@ public class BtsService {
         btsModel.setCreatedDay(btsEntity.getCreatedDay());
         btsModel.setExtension(btsEntity.getExtension());
         btsModel.setUpdatedDay(btsEntity.getUpdatedDay());
-        btsModel.setLineColor(btsEntity.getLineColor());
         btsModel.setIdStation(btsEntity.getIdStation());
         btsModel.setUrl(btsEntity.getUrl());
 

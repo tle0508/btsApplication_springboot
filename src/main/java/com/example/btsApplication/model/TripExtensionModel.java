@@ -4,7 +4,7 @@ public class TripExtensionModel {
     private Long id;
     private BtsModel startStation;
     private BtsModel endStation;
-    private PriceExtensionModel priceExtensionModel;
+    private PriceModel priceModel;
     private String time;
     
     public TripExtensionModel() {
@@ -29,13 +29,7 @@ public class TripExtensionModel {
         this.endStation = endStation;
     }
 
-	public PriceExtensionModel getPriceExtensionModel() {
-		return priceExtensionModel;
-	}
-
-	public void setPriceExtensionModel(PriceExtensionModel priceExtensionModel) {
-		this.priceExtensionModel = priceExtensionModel;
-	}
+	
 
     public String getTime() {
         return time;
@@ -43,6 +37,14 @@ public class TripExtensionModel {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public PriceModel getPriceModel() {
+        return priceModel;
+    }
+
+    public void setPriceModel(PriceModel priceModel) {
+        this.priceModel = priceModel;
     }
     
 }

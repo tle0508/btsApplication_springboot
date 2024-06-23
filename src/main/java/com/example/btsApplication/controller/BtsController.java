@@ -3,8 +3,6 @@ package com.example.btsApplication.controller;
 import com.example.btsApplication.model.BtsModel;
 import com.example.btsApplication.service.BtsService;
 
-
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +17,9 @@ public class BtsController {
         this.btsService = btsService;
     }
 
-    @GetMapping("/getStationByLineColor/{lineColor}")
-    public ResponseEntity<List<BtsModel>> getStationByLineColor(@PathVariable String lineColor) {
-        List<BtsModel> models = btsService.getStationByLineColor(lineColor,true);
-            return new ResponseEntity<>(models, HttpStatus.OK);
+    @GetMapping("/LineStation/{lineStationId}")
+    public ResponseEntity<List<BtsModel>> getBtsStationsByLineStationId(@PathVariable Long lineStationId) {
+        List<BtsModel> btsModels = btsService.getStationByLineStationID(lineStationId,true);
+        return ResponseEntity.ok(btsModels);
     }
 }

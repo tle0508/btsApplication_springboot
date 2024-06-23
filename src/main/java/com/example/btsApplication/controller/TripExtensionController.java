@@ -19,7 +19,7 @@ public class TripExtensionController {
         this.tripExtensiopnService = tripExtensiopnService;
     }
 
-    @GetMapping("getTripsByStartAndEndStationId/{startStationId}/{endStationId}")
+    @GetMapping("TripsByStartAndEndStationId/{startStationId}/{endStationId}")
     public ResponseEntity<List<TripExtensionModel>> getTripsByStartAndEndStationId(
             @PathVariable Long startStationId,
             @PathVariable Long endStationId) {
