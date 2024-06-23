@@ -2,6 +2,7 @@ package com.example.btsApplication.service;
 
 import com.example.btsApplication.entity.BtsStation;
 import com.example.btsApplication.model.BtsModel;
+import com.example.btsApplication.model.LineStaionModel;
 import com.example.btsApplication.repository.BtsRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class BtsService {
                 .map(BtsService::convertToModel)
                 .collect(Collectors.toList());
     }
+    
 
     public static  BtsModel convertToModel(BtsStation btsEntity){
         BtsModel btsModel = new BtsModel();
@@ -34,6 +36,10 @@ public class BtsService {
         btsModel.setLineColor(btsEntity.getLineColor());
         btsModel.setIdStation(btsEntity.getIdStation());
         btsModel.setUrl(btsEntity.getUrl());
+
+        LineStaionModel lineStaionModel = LineStationService.convertToModel(btsEntity.getLineStaion());
+        btsModel.setLineStaionModel(lineStaionModel);
+
        return btsModel;
     }
 }

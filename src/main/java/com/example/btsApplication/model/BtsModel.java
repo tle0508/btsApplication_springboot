@@ -14,7 +14,15 @@ public class BtsModel {
     private String idStation;
     private String lineColor;
     private String url;
+    private LineStaionModel lineStaionModel;
     
+
+    public LineStaionModel getLineStaionModel() {
+        return lineStaionModel;
+    }
+    public void setLineStaionModel(LineStaionModel lineStaionModel) {
+        this.lineStaionModel = lineStaionModel;
+    }
     public String getUrl() {
         return url;
     }

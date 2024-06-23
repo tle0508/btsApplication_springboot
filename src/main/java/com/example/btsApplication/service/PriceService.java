@@ -3,7 +3,10 @@ package com.example.btsApplication.service;
 import com.example.btsApplication.entity.Price;
 import com.example.btsApplication.model.PriceModel;
 import com.example.btsApplication.repository.PriceRepository;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,14 +24,17 @@ public class PriceService {
 
     public PriceModel updatePrice(Long numOfDistance, int price) {
         Optional<Price> priceEntity = priceRepository.findByNumOfDistance(numOfDistance);
-        if (priceEntity.isPresent()) {
-            Price updatePriceEntity = priceEntity.get();
-            updatePriceEntity.setPrice(price);
-            updatePriceEntity.setUpdatedDay(LocalDateTime.now());
-            return convertToModel(priceRepository.save(updatePriceEntity));
-        } else {
-            return null;
+        if(price < 100 && price > 0){
+            if (priceEntity.isPresent()) {
+                Price updatePriceEntity = priceEntity.get();
+                updatePriceEntity.setPrice(price);
+                updatePriceEntity.setUpdatedDay(LocalDateTime.now());
+                return convertToModel(priceRepository.save(updatePriceEntity));
+            } else {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"entity not exist");
+            }
         }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect price");
     }
    
     public List<PriceModel> getAllPrices() {

@@ -29,7 +29,16 @@ public class BtsStation {
     private String lineColor;
     @Column(name = "URL")
     private String url;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LINE_STATION_ID")
+    private LineStaion lineStaion;
 
+    public LineStaion getLineStaion() {
+        return lineStaion;
+    }
+    public void setLineStaion(LineStaion lineStaion) {
+        this.lineStaion = lineStaion;
+    }
     public String getUrl() {
         return url;
     }

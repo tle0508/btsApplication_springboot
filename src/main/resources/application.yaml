@@ -1,5 +1,5 @@
 spring:
   profiles:
-    default: sit
+    default: dev
 
 #  ng serve --configuration=sit
