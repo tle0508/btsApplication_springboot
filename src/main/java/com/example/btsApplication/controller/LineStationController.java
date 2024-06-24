@@ -1,5 +1,6 @@
 package com.example.btsApplication.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -26,5 +27,11 @@ public class LineStationController {
         Optional<LineStaionModel> lineStaionModelOptional = lineStationService.findById(id);
         return lineStaionModelOptional.map(ResponseEntity::ok)
                                       .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+	@GetMapping("allLineStation")
+    public ResponseEntity<List<LineStaionModel>> getAllLineStations() {
+        List<LineStaionModel> lineStations = lineStationService.getAllLineStations();
+        return ResponseEntity.ok(lineStations);
     }
 }

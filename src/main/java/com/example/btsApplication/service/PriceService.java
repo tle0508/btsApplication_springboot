@@ -6,6 +6,7 @@ import com.example.btsApplication.repository.PriceRepository;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
@@ -22,6 +23,7 @@ public class PriceService {
         this.priceRepository = priceRepository;
     }
 
+    @Transactional
     public PriceModel updatePrice(Long numOfDistance, int price) {
         Optional<Price> priceEntity = priceRepository.findByNumOfDistance(numOfDistance);
         if(price < 100 && price >= 0){
@@ -36,7 +38,8 @@ public class PriceService {
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect price");
     }
-   
+
+    @Transactional(readOnly = true)
     public List<PriceModel> getAllPrices() {
         List<Price> priceEntities = priceRepository.findAll();
         return priceEntities.stream()

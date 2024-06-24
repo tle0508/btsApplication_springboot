@@ -10,9 +10,10 @@ import com.example.btsApplication.repository.TripExtensionRepository;
 
 
 import org.springframework.stereotype.Service;
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 public class TripExtensionService {
@@ -36,6 +37,8 @@ public class TripExtensionService {
         tripModel.setTime(tripEntity.getTime());
         return tripModel;
     }
+
+    @Transactional(readOnly = true)
     public Optional<TripExtensionModel> getTripsByStartAndEndStationId(Long startStationId, Long endStationId) {
         Optional<TripExtension> tripEntities = tripExtensionRepository.findByStartStation_IdAndEndStation_Id(startStationId, endStationId);
         return tripEntities.map(TripExtensionService::convertToModel);
