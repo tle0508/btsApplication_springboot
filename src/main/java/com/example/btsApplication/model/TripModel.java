@@ -2,7 +2,6 @@ package com.example.btsApplication.model;
 
 import com.example.btsApplication.entity.Trip;
 import com.example.btsApplication.entity.TripExtension;
-import com.example.btsApplication.service.PriceExtensionService;
 
 public class TripModel {
     private Long id;
@@ -37,7 +36,7 @@ public class TripModel {
         tripModel.setStartStation(startStation);
         tripModel.setEndStation(endStation);
 
-        PriceModel price = PriceExtensionService.convertToModel(tripExtentionEntity.getPriceExtension());
+        PriceModel price = PriceModel.convertToModel(tripExtentionEntity.getPriceExtension());
         tripModel.setPriceModel(price);
 
         tripModel.setTime(tripExtentionEntity.getTime());

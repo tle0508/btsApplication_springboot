@@ -21,10 +21,10 @@ public class PriceController {
     }
 
    //
-    @PutMapping("/{numOfDistance}")
-    public PriceModel updatePrice(@PathVariable Long numOfDistance,@RequestParam int price) {
+    @PutMapping("/{id}")
+    public PriceModel updatePrice(@PathVariable Long id,@RequestParam int price) {
         try {
-            return priceService.updatePrice(numOfDistance, price);
+            return priceService.updatePrice(id, price);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error", e);
         }

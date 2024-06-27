@@ -5,25 +5,18 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "prices_extension")
 public class PriceExtension {
-    
-    @Column(name = "ID")
-    private int id;
     @Id
-    @Column(name = "NUM_OF_DISTANCE")
-    private Long numOfDistance;
+    @Column(name = "ID")
+    private Long id;
     @Column(name = "PRICE")
     private int price;
     @Column(name = "CREATED_DAY", updatable = false)
     private LocalDateTime createdDay;
     @Column(name = "UPDATED_DAY")
     private LocalDateTime updatedDay;
-
-    public Long getNumOfDistance() {
-        return numOfDistance;
-    }
-    public void setNumOfDistance(Long numOfDistance) {
-        this.numOfDistance = numOfDistance;
-    }
+    @Column(name = "STATION_DISTANCE")
+    private String stationDistance;
+    
     public int getPrice() {
         return price;
     }
@@ -42,10 +35,16 @@ public class PriceExtension {
     public void setUpdatedDay(LocalDateTime updatedDay) {
         this.updatedDay = updatedDay;
     }
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+    public String getStationDistance() {
+        return stationDistance;
+    }
+    public void setStationDistance(String stationDistance) {
+        this.stationDistance = stationDistance;
     }
 }

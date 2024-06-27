@@ -15,7 +15,7 @@ public class Trip {
     @JoinColumn(name = "END_STATION_ID")
     private BtsStation endStation;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "DISTANCE")
+    @JoinColumn(name = "PRICE_ID")
     private Price price;
     @Column(name ="TIME")
     private String time;

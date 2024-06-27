@@ -21,9 +21,9 @@ public class PriceExtensionController {
     }
 
     //
-     @PutMapping("/{numOfDistance}")
-    public PriceModel updatePrice(@PathVariable Long numOfDistance,@RequestParam int price) {      
-        return priceExtensionService.updatePrice(numOfDistance, price);  
+     @PutMapping("/{id}")
+    public PriceModel updatePrice(@PathVariable Long id,@RequestParam int price) {      
+        return priceExtensionService.updatePrice(id, price);  
     }
  
 //

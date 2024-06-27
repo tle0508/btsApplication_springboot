@@ -24,14 +24,14 @@ public class PriceExtensionService {
     }
     
     @Transactional
-    public PriceModel updatePrice(Long numOfDistance, int price) {
-        Optional<PriceExtension> priceEntity = priceExtensionRepository.findByNumOfDistance(numOfDistance);
+    public PriceModel updatePrice(Long id, int price) {
+        Optional<PriceExtension> priceEntity = priceExtensionRepository.findById(id);
         if (price < 100 && price >= 0) {
             if (priceEntity.isPresent()) {
                 PriceExtension updatePriceEntity = priceEntity.get();
                 updatePriceEntity.setPrice(price);
                 updatePriceEntity.setUpdatedDay(LocalDateTime.now());
-                return convertToModel(priceExtensionRepository.save(updatePriceEntity));
+                return PriceModel.convertToModel(priceExtensionRepository.save(updatePriceEntity));
             } else {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"entity not exist");
             }
@@ -43,17 +43,9 @@ public class PriceExtensionService {
     public List<PriceModel> getAllPrices() {
         List<PriceExtension> priceEntities = priceExtensionRepository.findAll();
         return priceEntities.stream()
-                .map(PriceExtensionService::convertToModel)
+                .map(PriceModel::convertToModel)
                 .collect(Collectors.toList());
     }
 
-    public static PriceModel convertToModel(PriceExtension priceEntity) {
-        PriceModel priceModel = new PriceModel();
-        priceModel.setId(priceEntity.getId());
-        priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
-        priceModel.setCreatedDay(priceEntity.getCreatedDay());
-        priceModel.setUpdatedDay(priceEntity.getUpdatedDay());
-        priceModel.setPrice(priceEntity.getPrice());
-        return priceModel;
-    }
+  
 }

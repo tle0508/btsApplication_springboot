@@ -25,7 +25,6 @@ public class BtsStation {
     private String btsStationNameENG;
     @Column(name = "ID_STATION")
     private String idStation;
-    
     @Column(name = "URL")
     private String url;
     @ManyToOne(fetch = FetchType.LAZY)
