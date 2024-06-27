@@ -22,6 +22,8 @@ public class LineStaion {
     @Column(name = "UPDATED_DAY")
     private LocalDateTime updatedDay;
 	
+	
+
 	public Long getId() {
 		return id;
 	}

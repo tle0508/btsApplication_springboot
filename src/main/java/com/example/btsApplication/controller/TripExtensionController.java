@@ -1,6 +1,7 @@
 package com.example.btsApplication.controller;
 
-import com.example.btsApplication.model.TripExtensionModel;
+
+import com.example.btsApplication.model.TripModel;
 import com.example.btsApplication.service.TripExtensionService;
 
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,11 @@ public class TripExtensionController {
         this.tripExtensiopnService = tripExtensiopnService;
     }
 
-    @GetMapping("TripsByStartAndEndStationId/{startStationId}/{endStationId}")
-    public ResponseEntity<TripExtensionModel> getTripsByStartAndEndStationId(
+    @GetMapping("/TripsByStartAndEndStationId/{startStationId}/{endStationId}")
+    public ResponseEntity<TripModel> getTripsByStartAndEndStationId(
             @PathVariable Long startStationId,
             @PathVariable Long endStationId) {
-        Optional<TripExtensionModel> trips = tripExtensiopnService.getTripsByStartAndEndStationId(startStationId, endStationId);
+        Optional<TripModel> trips = tripExtensiopnService.getTripsByStartAndEndStationId(startStationId, endStationId);
         return trips.map(ResponseEntity::ok)
                                       .orElseGet(() -> ResponseEntity.notFound().build());
     }

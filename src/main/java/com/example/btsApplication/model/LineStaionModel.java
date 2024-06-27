@@ -2,6 +2,8 @@ package com.example.btsApplication.model;
 
 import java.time.LocalDateTime;
 
+import com.example.btsApplication.entity.LineStaion;
+
 
 public class LineStaionModel {
 	private Long id;   
@@ -10,6 +12,17 @@ public class LineStaionModel {
     private String color;
     private LocalDateTime createdDay; 
     private LocalDateTime updatedDay;
+	
+	 public static  LineStaionModel convertToModel(LineStaion lineStaion){
+        LineStaionModel lineStaionModel = new LineStaionModel();
+        lineStaionModel.setColor(lineStaion.getColor());
+        lineStaionModel.setId(lineStaion.getId());
+        lineStaionModel.setLineStationNameENG(lineStaion.getLineStationNameENG());
+        lineStaionModel.setLineStationNameTH(lineStaion.getLineStationNameTH());
+        lineStaionModel.setCreatedDay(lineStaion.getCreatedDay());
+        lineStaionModel.setUpdatedDay(lineStaion.getUpdatedDay());
+       return lineStaionModel;
+    }
 	
 	public Long getId() {
 		return id;

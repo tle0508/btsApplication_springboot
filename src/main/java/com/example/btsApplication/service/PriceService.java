@@ -31,7 +31,7 @@ public class PriceService {
                 Price updatePriceEntity = priceEntity.get();
                 updatePriceEntity.setPrice(price);
                 updatePriceEntity.setUpdatedDay(LocalDateTime.now());
-                return convertToModel(priceRepository.save(updatePriceEntity));
+                return PriceModel.convertToModel(priceRepository.save(updatePriceEntity));
             } else {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"entity not exist");
             }
@@ -43,16 +43,8 @@ public class PriceService {
     public List<PriceModel> getAllPrices() {
         List<Price> priceEntities = priceRepository.findAll();
         return priceEntities.stream()
-                .map(PriceService::convertToModel)
+                .map(PriceModel::convertToModel)
                 .collect(Collectors.toList());
     }
-    public static PriceModel convertToModel(Price priceEntity){
-        PriceModel priceModel = new PriceModel();
-        priceModel.setId(priceEntity.getId());
-        priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
-        priceModel.setCreatedDay(priceEntity.getCreatedDay());
-        priceModel.setUpdatedDay(priceEntity.getUpdatedDay());
-        priceModel.setPrice(priceEntity.getPrice());
-        return priceModel;
-    }
+
 }

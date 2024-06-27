@@ -13,7 +13,7 @@ import com.example.btsApplication.model.LineStaionModel;
 import com.example.btsApplication.service.LineStationService;
 
 @RestController
-@RequestMapping("/api/lineStations")
+@RequestMapping("/api/LineStations")
 public class LineStationController {
 
     private final LineStationService lineStationService;
@@ -22,14 +22,14 @@ public class LineStationController {
         this.lineStationService = lineStationService;
     }
 
-    @GetMapping("lineStation/{id}")
+    @GetMapping("/LineStation/{id}")
     public ResponseEntity<LineStaionModel> getLineStationById(@PathVariable Long id) {
         Optional<LineStaionModel> lineStaionModelOptional = lineStationService.findById(id);
         return lineStaionModelOptional.map(ResponseEntity::ok)
                                       .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-	@GetMapping("allLineStation")
+	@GetMapping("/AllLineStation")
     public ResponseEntity<List<LineStaionModel>> getAllLineStations() {
         List<LineStaionModel> lineStations = lineStationService.getAllLineStations();
         return ResponseEntity.ok(lineStations);

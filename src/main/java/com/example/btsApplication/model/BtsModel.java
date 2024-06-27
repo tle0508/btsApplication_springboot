@@ -3,6 +3,8 @@ package com.example.btsApplication.model;
 
 import java.time.LocalDateTime;
 
+import com.example.btsApplication.entity.BtsStation;
+
 public class BtsModel {
     private Long id;
     private Boolean isActivate;
@@ -16,7 +18,24 @@ public class BtsModel {
     private String url;
     private LineStaionModel lineStaionModel;
     
+  public static  BtsModel convertToModel(BtsStation btsEntity){
+        BtsModel btsModel = new BtsModel();
+        btsModel.setId(btsEntity.getId());
+        btsModel.setActivate(btsEntity.getActivate());
+        btsModel.setBtsStationNameENG(btsEntity.getBtsStationNameENG());
+        btsModel.setBtsStationNameTH(btsEntity.getBtsStationNameTH());
+        btsModel.setCreatedDay(btsEntity.getCreatedDay());
+        btsModel.setExtension(btsEntity.getExtension());
+        btsModel.setUpdatedDay(btsEntity.getUpdatedDay());
+        btsModel.setIdStation(btsEntity.getIdStation());
+        btsModel.setUrl(btsEntity.getUrl());
 
+        LineStaionModel lineStaionModel = LineStaionModel.convertToModel(btsEntity.getLineStaion());
+        btsModel.setLineStaionModel(lineStaionModel);
+
+       return btsModel;
+    }
+    
     public LineStaionModel getLineStaionModel() {
         return lineStaionModel;
     }

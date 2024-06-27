@@ -22,26 +22,16 @@ public class LineStationService {
     @Transactional(readOnly = true)
     public Optional<LineStaionModel> findById(Long id) {
         Optional<LineStaion> lineStaion = lineStationRepository.findById(id);
-        return lineStaion.map(LineStationService::convertToModel);
+        return lineStaion.map(LineStaionModel::convertToModel);
     }
     
     @Transactional(readOnly = true)
     public List<LineStaionModel> getAllLineStations() {
         List<LineStaion> lineStaions = lineStationRepository.findAll();
         return lineStaions.stream()
-                          .map(LineStationService::convertToModel)
+                          .map(LineStaionModel::convertToModel)
                           .collect(Collectors.toList());
     }
  
-     public static  LineStaionModel convertToModel(LineStaion lineStaion){
-        LineStaionModel lineStaionModel = new LineStaionModel();
-        lineStaionModel.setColor(lineStaion.getColor());
-        lineStaionModel.setId(lineStaion.getId());
-        lineStaionModel.setLineStationNameENG(lineStaion.getLineStationNameENG());
-        lineStaionModel.setLineStationNameTH(lineStaion.getLineStationNameTH());
-        lineStaionModel.setCreatedDay(lineStaion.getCreatedDay());
-        lineStaionModel.setUpdatedDay(lineStaion.getUpdatedDay());
-       return lineStaionModel;
-    }
-
+    
 }

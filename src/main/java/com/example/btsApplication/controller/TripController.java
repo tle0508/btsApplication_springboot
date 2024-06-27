@@ -21,12 +21,13 @@ public class TripController {
         this.tripService = tripService;
     }
 
-    @GetMapping("TripsByStartAndEndStationId/{startStationId}/{endStationId}")
+    @GetMapping("/TripsByStartAndEndStationId/{startStationId}/{endStationId}")
     public ResponseEntity<TripModel> getTripsByStartAndEndStationId(
             @PathVariable Long startStationId,
             @PathVariable Long endStationId) {
         Optional<TripModel> trips = tripService.getTripsByStartAndEndStationId(startStationId, endStationId);
-       return trips.map(ResponseEntity::ok)
+        
+        return trips.map(ResponseEntity::ok)
                                       .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

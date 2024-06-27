@@ -3,13 +3,24 @@ package com.example.btsApplication.model;
 
 import java.time.LocalDateTime;
 
+import com.example.btsApplication.entity.Price;
+
 public class PriceModel {
     private int id;
     private Long numOfDistance;
     private int price;
     private LocalDateTime createdDay;
     private LocalDateTime updatedDay;
-
+    
+    public static PriceModel convertToModel(Price priceEntity){
+        PriceModel priceModel = new PriceModel();
+        priceModel.setId(priceEntity.getId());
+        priceModel.setNumOfDistance(priceEntity.getNumOfDistance());
+        priceModel.setCreatedDay(priceEntity.getCreatedDay());
+        priceModel.setUpdatedDay(priceEntity.getUpdatedDay());
+        priceModel.setPrice(priceEntity.getPrice());
+        return priceModel;
+    }
     public PriceModel() {
     }
 
