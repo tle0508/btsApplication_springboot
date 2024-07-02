@@ -4,7 +4,7 @@ package com.example.btsApplication.model;
 import java.time.LocalDateTime;
 
 import com.example.btsApplication.entity.Price;
-import com.example.btsApplication.entity.PriceExtension;
+
 
 public class PriceModel {
     private Long id;
@@ -22,15 +22,7 @@ public class PriceModel {
         priceModel.setStationDistance(priceEntity.getStationDistance());
         return priceModel;
     }
-      public static PriceModel convertToModel(PriceExtension priceEntity) {
-        PriceModel priceModel = new PriceModel();
-        priceModel.setId(priceEntity.getId());
-        priceModel.setCreatedDay(priceEntity.getCreatedDay());
-        priceModel.setUpdatedDay(priceEntity.getUpdatedDay());
-        priceModel.setPrice(priceEntity.getPrice());
-        priceModel.setStationDistance(priceEntity.getStationDistance());
-        return priceModel;
-    }
+     
 
     public PriceModel() {
     }

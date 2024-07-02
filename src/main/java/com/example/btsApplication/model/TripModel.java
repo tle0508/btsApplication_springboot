@@ -1,7 +1,7 @@
 package com.example.btsApplication.model;
 
 import com.example.btsApplication.entity.Trip;
-import com.example.btsApplication.entity.TripExtension;
+
 
 public class TripModel {
     private Long id;
@@ -27,21 +27,7 @@ public class TripModel {
         return tripModel;
     }
 
-    public static TripModel convertToModelExtention (TripExtension tripExtentionEntity) {
-        TripModel tripModel = new TripModel();
-        tripModel.setId(tripExtentionEntity.getId());
-
-        BtsModel startStation = BtsModel.convertToModel(tripExtentionEntity.getStartStation());
-        BtsModel endStation = BtsModel.convertToModel(tripExtentionEntity.getEndStation());
-        tripModel.setStartStation(startStation);
-        tripModel.setEndStation(endStation);
-
-        PriceModel price = PriceModel.convertToModel(tripExtentionEntity.getPriceExtension());
-        tripModel.setPriceModel(price);
-
-        tripModel.setTime(tripExtentionEntity.getTime());
-        return tripModel;
-    }
+    
 
     public TripModel() {
     }
