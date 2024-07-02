@@ -25,8 +25,7 @@ public class TripExtensionController {
             @PathVariable Long startStationId,
             @PathVariable Long endStationId) {
         Optional<TripModel> trips = tripExtensiopnService.getTripsByStartAndEndStationId(startStationId, endStationId);
-        return trips.map(ResponseEntity::ok)
-                                      .orElseGet(() -> ResponseEntity.notFound().build());
+        return ResponseEntity.of(trips);
     }
 
 }

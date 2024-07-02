@@ -26,17 +26,17 @@ public class PriceExtensionService {
     @Transactional
     public PriceModel updatePrice(Long id, int price) {
         Optional<PriceExtension> priceEntity = priceExtensionRepository.findById(id);
-        if (price < 100 && price >= 0) {
-            if (priceEntity.isPresent()) {
-                PriceExtension updatePriceEntity = priceEntity.get();
-                updatePriceEntity.setPrice(price);
-                updatePriceEntity.setUpdatedDay(LocalDateTime.now());
-                return PriceModel.convertToModel(priceExtensionRepository.save(updatePriceEntity));
-            } else {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"entity not exist");
-            }
+        if (price < 0 || price >= 100) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect price");
         }
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect price");
+        if (priceEntity.isPresent()) {
+            PriceExtension updatePriceEntity = priceEntity.get();
+            updatePriceEntity.setPrice(price);
+            updatePriceEntity.setUpdatedDay(LocalDateTime.now());
+            return PriceModel.convertToModel(priceExtensionRepository.save(updatePriceEntity));
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"entity not exist");
+        }
     }
 
     @Transactional(readOnly = true)

@@ -6,7 +6,7 @@ import com.example.btsApplication.service.PriceExtensionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -20,16 +20,20 @@ public class PriceExtensionController {
         this.priceExtensionService = priceExtensionService;
     }
 
-    //
-     @PutMapping("/{id}")
-    public PriceModel updatePrice(@PathVariable Long id,@RequestParam int price) {      
-        return priceExtensionService.updatePrice(id, price);  
+    @PutMapping("/{id}/{price}")
+    public ResponseEntity<PriceModel> updatePrice(@PathVariable Long id, @PathVariable int price) {
+        try {
+            PriceModel updatedPrice = priceExtensionService.updatePrice(id, price);
+            return ResponseEntity.ok(updatedPrice);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error", e);
+        }
     }
  
-//
+
     @GetMapping("/AllPrices")
     public ResponseEntity<List<PriceModel>> getAllPrices() {
         List<PriceModel> prices = priceExtensionService.getAllPrices();
-        return new ResponseEntity<>(prices, HttpStatus.OK);
+        return ResponseEntity.ok(prices);
     }
 }

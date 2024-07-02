@@ -14,7 +14,7 @@ public class BtsModel {
     private String btsStationNameTH;
     private String btsStationNameENG;
     private String idStation;
-    
+    private Integer extensionGroupNumber;
     private String url;
     private LineStaionModel lineStaionModel;
     
@@ -29,13 +29,21 @@ public class BtsModel {
         btsModel.setUpdatedDay(btsEntity.getUpdatedDay());
         btsModel.setIdStation(btsEntity.getIdStation());
         btsModel.setUrl(btsEntity.getUrl());
-
+        btsModel.setExtensionGroupNumber(btsEntity.getExtensionGroupNumber());
         LineStaionModel lineStaionModel = LineStaionModel.convertToModel(btsEntity.getLineStaion());
         btsModel.setLineStaionModel(lineStaionModel);
 
        return btsModel;
     }
     
+    public Integer getExtensionGroupNumber() {
+    return extensionGroupNumber;
+}
+
+public void setExtensionGroupNumber(Integer extensionGroupNumber) {
+    this.extensionGroupNumber = extensionGroupNumber;
+}
+
     public LineStaionModel getLineStaionModel() {
         return lineStaionModel;
     }

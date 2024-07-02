@@ -39,6 +39,11 @@ public class PriceService {
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect price");
     }
+    @Transactional(readOnly = true)
+    public Optional<PriceModel> findById(Long id) {
+        Optional<Price> priceEntity = priceRepository.findById(id);
+        return priceEntity.map(PriceModel::convertToModel);
+    }
 
     @Transactional(readOnly = true)
     public List<PriceModel> getAllPrices() {

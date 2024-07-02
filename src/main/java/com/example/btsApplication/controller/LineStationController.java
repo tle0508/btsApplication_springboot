@@ -24,9 +24,8 @@ public class LineStationController {
 
     @GetMapping("/LineStation/{id}")
     public ResponseEntity<LineStaionModel> getLineStationById(@PathVariable Long id) {
-        Optional<LineStaionModel> lineStaionModelOptional = lineStationService.findById(id);
-        return lineStaionModelOptional.map(ResponseEntity::ok)
-                                      .orElseGet(() -> ResponseEntity.notFound().build());
+        Optional<LineStaionModel> lineStaionModel = lineStationService.findById(id);
+        return ResponseEntity.of(lineStaionModel);
     }
 
 	@GetMapping("/AllLineStation")

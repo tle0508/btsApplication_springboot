@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "station")
+@Table(name = "new_station")
 public class BtsStation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +27,18 @@ public class BtsStation {
     private String idStation;
     @Column(name = "URL")
     private String url;
+    @Column(name = "EXTENSION_GROUP_NUMBER")
+    private Integer extensionGroupNumber;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "LINE_STATION_ID")
     private LineStaion lineStaion;
 
+    public Integer getExtensionGroupNumber() {
+        return extensionGroupNumber;
+    }
+    public void setExtensionGroupNumber(Integer extensionGroupNumber) {
+        this.extensionGroupNumber = extensionGroupNumber;
+    }
     public LineStaion getLineStaion() {
         return lineStaion;
     }

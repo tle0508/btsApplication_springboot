@@ -3,7 +3,7 @@ package com.example.btsApplication.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 @Entity
-@Table(name = "prices")
+@Table(name = "new_prices")
 public class Price {
 
     @Id
