@@ -26,20 +26,25 @@ public class PriceService {
     @Transactional
     public PriceModel updatePrice(Long id, int price) {
         Optional<Price> priceEntity = priceRepository.findById(id);
-        if(price < 100 && price >= 0){
-            if (priceEntity.isPresent()) {
-                Price updatePriceEntity = priceEntity.get();
-                updatePriceEntity.setPrice(price);
-                updatePriceEntity.setUpdatedDay(LocalDateTime.now());
-                priceRepository.save(updatePriceEntity);
-                return PriceModel.convertToModel(priceRepository.save(updatePriceEntity));
-            } else {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"entity not exist");
-            }
+        checkIncorrectPrice(price);
+        if (priceEntity.isPresent()) {
+            Price updatePriceEntity = priceEntity.get();
+            updatePriceEntity.setPrice(price);
+            updatePriceEntity.setUpdatedDay(LocalDateTime.now());
+            priceRepository.save(updatePriceEntity);
+            return PriceModel.convertToModel(priceRepository.save(updatePriceEntity));
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"entity not exist");
         }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect price");
     }
-    @Transactional(readOnly = true)
+
+    public void checkIncorrectPrice(int price){
+        if(price > 100 || price <= 0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect price");
+        }
+    }
+
+    
     public Optional<PriceModel> findById(Long id) {
         Optional<Price> priceEntity = priceRepository.findById(id);
         return priceEntity.map(PriceModel::convertToModel);
